@@ -1,6 +1,6 @@
 const HomePage = require('../pageobjects/homePage.js');
 
-class Pages {
+class CommonActions {
 
 	constructor() {
 		this.homePage = new HomePage(`https://the-internet.herokuapp.com/`, `HomePage`);
@@ -8,4 +8,4 @@ class Pages {
 
 }
 
-module.exports = Pages;
+module.exports = CommonActions;

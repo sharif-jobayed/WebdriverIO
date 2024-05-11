@@ -1,14 +1,15 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
-const CommonActions = require('../utils/commonActions.js');
+const Pages = require('../utils/commonActions.js');
 
 
-const commonActions = new CommonActions();
+const pages = new Pages();
 
-Given(/^I am on the '(.*)'$/, async() => {
-	await commonActions.homePage.goToHomePage();
+Given(/^I am on the '(.*)'$/, async(page) => {
+	await pages.homePage.goToHomePage();
+	await pages.homePage.pageIsLoaded(5000);
 });
-When(/^$/, async() => {
-
+When(/^I click on the '(.*)' link on the '(.*)' page$/, async(link, page) => {
+	await pages.homePage.abTestingLink.doClick();
 });
 Then(/^$/, async() => {
 

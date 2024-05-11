@@ -7,4 +7,4 @@ Feature: Test "The Internet Heroku App"
 		Given I am on the 'Home page'
 
 	Scenario Outline: I check if 'businesses are able to simultaneously' exists in a paragraph
-		# When I click on the 'A/B Testing' link on the 'Homepage' page
+		When I click on the 'A/B Testing' link on the 'Homepage' page
