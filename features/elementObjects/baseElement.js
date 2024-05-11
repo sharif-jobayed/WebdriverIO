@@ -3,7 +3,7 @@ import {$, $$} from '@wdio/globals';
 
 class BaseElement {
 
-	constructor (elementLocator, elementName) {
+	constructor(elementLocator, elementName) {
 		this.locator = $(elementLocator);
 		this.locators = $$(elementLocator);
 		this.name = elementName;
@@ -23,11 +23,15 @@ class BaseElement {
 		await this.write(input);
 	}
 	async waitForElementToExist(miliseconds) {
-		await (await this.locator).waitForExist({timeout:miliseconds});
+		await (await this.locator).waitForExist({
+			timeout: miliseconds,
+		});
 	}
 	async waitForElementsToExist(miliseconds) {
 		await this.locators.forEach(async i => {
-			await i.waitForExist({timeout:miliseconds});
+			await i.waitForExist({
+				timeout: miliseconds,
+			});
 		});
 	}
 	async isElementChecked() {
@@ -46,7 +50,15 @@ class BaseElement {
 			return await i.isEnabled();
 		});
 	}
+	async isElementDisplayed() {
+		await (await this.locator).isDisplayed();
+	}
+	async areElementsDisplayed() {
+		await this.locators.forEach(async i => {
+			return await i.isDisplayed();
+		});
+	}
 
 }
 
-export default BaseElement;
+export default new BaseElement();
