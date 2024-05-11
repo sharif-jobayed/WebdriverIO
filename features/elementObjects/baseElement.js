@@ -1,4 +1,4 @@
-import {$, $$} from '@wdio/globals';
+const {$, $$} = require('@wdio/globals');
 
 
 class BaseElement {
@@ -61,4 +61,4 @@ class BaseElement {
 
 }
 
-export default BaseElement;
+module.exports = BaseElement;

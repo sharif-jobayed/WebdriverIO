@@ -1,11 +1,11 @@
-import BaseElement from "../elementObjects/baseElement.js";
-import BasePage from "./basePage.js";
+const BaseElement = require('../elementObjects/baseElement.js');
+const BasePage = require('./basePage.js');
 
 
 class HomePage extends BasePage {
 
-	constructor() {
-		super(`https://the-internet.herokuapp.com/`, `HomePage`);
+	constructor(pageURL, pageName) {
+		super(pageURL, pageName);
 
 		this.paegHeading = new BaseElement(`//h1[@class='heading']`,`HomePage heading`);
 		this.abTestingLink = new BaseElement(`//a[@href='/abtest']`, `A/B Testing link`);
@@ -17,4 +17,4 @@ class HomePage extends BasePage {
 
 }
 
-export default HomePage;
+module.exports = HomePage;
