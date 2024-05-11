@@ -2,7 +2,7 @@ class BasePage {
 
 	constructor(pageURL, pageName) {
 		this.url = pageURL;
-		this.title = browser.getTitle;
+		this.title = browser.getTitle();
 		this.name = pageName;
 	}
 

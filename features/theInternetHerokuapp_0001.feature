@@ -3,8 +3,9 @@ Feature: Test "The Internet Heroku App"
 	I do various operations in the application
 	To test the application
 
-	Background: Homepage
-		Given I am on the 'Home page'
+	Background: Landed on the Home Page
+		Given I am on the 'Home Page'
 
-	Scenario Outline: I check if 'businesses are able to simultaneously' exists in a paragraph
-		When I click on the 'A/B Testing' link on the 'Homepage' page
+	Scenario: I check if 'businesses are able to simultaneously' exists in a paragraph
+		When I click on the 'A/B Testing' link on the 'Home Page'
+		Then I am on the 'A/B Testing Page'
