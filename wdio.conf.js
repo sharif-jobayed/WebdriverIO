@@ -238,8 +238,9 @@ exports.config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {Object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: async (world, context) => {
+        await browser.setWindowSize(1440, 900);
+    },
     /**
      *
      * Runs before a Cucumber Step.
