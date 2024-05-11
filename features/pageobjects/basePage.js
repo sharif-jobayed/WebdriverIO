@@ -19,11 +19,11 @@ class BasePage {
 			});
 			}, {
 				timeout: miliseconds,
-				timeoutMsg: `The page is not fully loaded yet`,
+				timeoutMsg: `The ${this.name} is not fully loaded yet`,
 			}
 		);
 	}
 
 }
 
-export default new BasePage();
+export default BasePage;
