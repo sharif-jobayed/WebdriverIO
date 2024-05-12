@@ -6,6 +6,9 @@ class HomePage extends BasePage {
 
 	constructor(pageURL, pageName) {
 		super(pageURL, pageName);
+
+		this.homePageHeading = new BaseElement(`//h1[@class="heading"]`, `Home Page heading`);
+		this.abTestingPageLink = new BaseElement(`//a[@href="/abtest"]`, `A/B Testing Page link`);
 	}
 
 	async goToHomePage() {
