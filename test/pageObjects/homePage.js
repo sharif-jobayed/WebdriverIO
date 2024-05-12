@@ -10,11 +10,7 @@ class HomePage extends BasePage {
 		this.homePageHeading = new BaseElement(`//h1[@class="heading"]`, `Home Page heading`);
 		this.abTestingPageLink = new BaseElement(`//a[@href="/abtest"]`, `A/B Testing Page link`);
 	}
-
-	async goToHomePage() {
-		await this.goToURL(this.url);
-	}
-
+	
 }
 
 module.exports = HomePage;
