@@ -13,7 +13,7 @@ class BasePage {
 		return this.title !== ``;
 	}
 	async isPageLoaded(ms) {
-		await browser.waitUntil(async() => {
+		await browser.waitUntil(async () => {
 			const readyState = await browser.execute(() => document.readyState);
 			return readyState === 'complete';
 		}, {

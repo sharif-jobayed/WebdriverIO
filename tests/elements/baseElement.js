@@ -1,4 +1,4 @@
-const {$, $$} = require('@wdio/globals');
+const { $, $$ } = require('@wdio/globals');
 
 
 class BaseElement {

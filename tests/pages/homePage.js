@@ -2,7 +2,7 @@ const BaseElement = require('../elements/baseElement.js');
 const BasePage = require('./basePage.js');
 
 
-class HomePage extends BasePage{
+class HomePage extends BasePage {
 
 	constructor(pageURL, pageName) {
 		super(pageURL, pageName);
