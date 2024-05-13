@@ -21,8 +21,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // ToDo: define location for spec files here
-        './test/**/*.feature',
+        './tests/features/**/*.feature',
     ],
     // Patterns to exclude.
     exclude: [
@@ -129,7 +128,7 @@ exports.config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./test/stepDefinitions/**/*.js'],
+        require: ['./tests/steps/**/*.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -231,7 +230,7 @@ exports.config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {object}                 context  Cucumber World object
      */
-    beforeScenario: async (world, context) => {
+    beforeScenario: async(world, context) => {
         await browser.setWindowSize(1440, 900);
     },
     /**

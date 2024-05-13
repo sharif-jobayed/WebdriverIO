@@ -1,4 +1,0 @@
-{
-  "script": "return (() => {\r\n\t\t\t\treturn document.readyState === `complete`;\r\n\t\t\t}).apply(null, arguments)",
-  "args": []
-}
