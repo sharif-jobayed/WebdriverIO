@@ -8,4 +8,4 @@ Feature: User Login
 		Then 'HomePage' is loaded
 
   Scenario: A/B Testing
-    When I click on 'A/B Testing' link
+    When I click 'ABTestingLink' on the 'HomePage'

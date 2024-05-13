@@ -23,3 +23,11 @@ Then(
 		await currentPage.isPageLoaded(5000);
 	}
 );
+When(
+	/^I click '(.*)' on the '(.*)'$/,
+		async(element, page) => {
+			const currentElement = pages[page][element];
+
+			await currentElement.clickEl();
+		}
+	);
