@@ -17,3 +17,9 @@ Feature: User Login
   Scenario: Add/Remove Elements
     When I click 'AddRemoveElementsLink' on the 'HomePage'
     Then 'AddRemoveElementsPage' is loaded
+    
+    When I click 'AddElementButton' on the 'AddRemoveElementsPage'
+    Then 'DeleteButton' is displayed on the 'AddRemoveElementsPage'
+
+    When I click 'DeleteButton' on the 'AddRemoveElementsPage'
+    Then 'DeleteButton' is not displayed on the 'AddRemoveElementsPage'

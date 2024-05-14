@@ -33,7 +33,21 @@ Then(
 Then(
 	/^'(.*)' sentence exists in the '(.*)' on the '(.*)'$/,
 	async (sentence, element, page) => {
-		const sentenceDoesExist = pages[page][element].isExistInEl(sentence);
-		expect(await sentenceDoesExist).to.be.true;		
+		const currentElement = pages[page][element];
+		expect(await currentElement.isExistInEl(sentence)).to.be.true;		
+	}
+);
+Then(
+	/^'(.*)' is displayed on the '(.*)'$/,
+	async (element, page) => {
+		const currentElement = pages[page][element];
+		assert.isTrue(await currentElement.isVisibleEl(), `${currentElement} is not visible on the ${page}`);
+	}
+);
+Then(
+	/^'(.*)' is not displayed on the '(.*)'$/,
+	async (element, page) => {
+		const currentElement = pages[page][element];
+		assert.isFalse(await currentElement.isVisibleEl(), `${currentElement} is visible on the ${page}`);
 	}
 );
