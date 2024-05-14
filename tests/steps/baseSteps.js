@@ -9,7 +9,6 @@ Given(
 	/^I am on the '(.*)'$/,
 	async (page) => {
 		const currentPage = pages[page];
-
 		await currentPage.goToURL();
 		assert.isTrue(await currentPage.isPageOpen(), `${await currentPage.name} is not open yet`);
 	}
@@ -18,7 +17,6 @@ When(
 	/^I click '(.*)' on the '(.*)'$/,
 	async (element, page) => {
 		const currentElement = pages[page][element];
-
 		await currentElement.clickEl();
 	}
 );
@@ -26,7 +24,6 @@ Then(
 	/^'(.*)' is loaded$/,
 	async (page) => {
 		const currentPage = pages[page];
-
 		await currentPage.isPageLoaded(5000);
 	}
 );
