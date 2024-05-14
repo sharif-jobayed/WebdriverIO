@@ -10,7 +10,6 @@ Given(
 	async (page) => {
 		const currentPage = pages[page];
 
-		console.log(`${currentPage.name}`);
 		await currentPage.goToURL();
 		assert.isTrue(await currentPage.isPageOpen(), `${await currentPage.name} is not open yet`);
 	}

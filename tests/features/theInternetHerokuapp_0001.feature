@@ -7,6 +7,13 @@ Feature: User Login
     Given I am on the 'HomePage'
     Then 'HomePage' is loaded
 
+  @Test-0001
   Scenario: A/B Testing
     When I click 'ABTestingLink' on the 'HomePage'
-    Then 'split testing' sentence exists in the 'Paragraph' on the 'ABTestingPage'
+    Then 'ABTestingPage' is loaded
+    And 'split testing' sentence exists in the 'Paragraph' on the 'ABTestingPage'
+
+  @Test-0002
+  Scenario: Add/Remove Elements
+    When I click 'AddRemoveElementsLink' on the 'HomePage'
+    Then 'AddRemoveElementsPage' is loaded

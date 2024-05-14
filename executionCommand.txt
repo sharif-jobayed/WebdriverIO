@@ -1,0 +1,4 @@
+
+
+
+"npx wdio wdio.conf.js --cucumberOpts.tagExpression='@Test-0000'"

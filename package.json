@@ -10,7 +10,8 @@
         "@wdio/spec-reporter": "^8.36.1"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "wdio": "wdio run wdio.conf.js",
+        "exsfc": "npx wdio wdio.conf.js --cucumberOpts.tagExpression='@Test-'"
     },
     "dependencies": {
         "chai": "^4.4.1"
