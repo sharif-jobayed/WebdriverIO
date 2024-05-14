@@ -9,3 +9,4 @@ Feature: User Login
 
   Scenario: A/B Testing
     When I click 'ABTestingLink' on the 'HomePage'
+    Then 'split testing' sentence exists in the 'Paragraph' on the 'ABTestingPage'

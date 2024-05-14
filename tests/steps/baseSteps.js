@@ -31,3 +31,10 @@ Then(
 		await currentPage.isPageLoaded(5000);
 	}
 );
+Then(
+	/^'(.*)' sentence exists in the '(.*)' on the '(.*)'$/,
+	async (sentence, element, page) => {
+		const sentenceDoesExist = pages[page][element].isExistInEl(sentence);
+		expect(await sentenceDoesExist).to.be.true;		
+	}
+);

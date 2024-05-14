@@ -11,18 +11,21 @@ class BaseElement {
 
 	async clickEl() {
 		await (await this.locator).click();
-		console.log(`Clicked on ${this.name}`);
+		// console.log(`Clicked on ${this.name}`);
 	}
 	async clearAndTypeEl(input) {
 		await (await this.locator).clearValue();
 		await (await this.locator).addValue(input);
-		console.log(`Cleared ${this.name} & typed ${input} into it`);
+		// console.log(`Cleared ${this.name} & typed ${input} into it`);
 	}
 	async isCheckedEl() {
 		return (await this.locator).isSelected();
 	}
 	async isVisibleEl() {
 		return (await this.locator).isDisplayed();
+	}
+	async isExistInEl(value) {
+		return (await this.locator.getText()).includes(value);
 	}
 
 }
