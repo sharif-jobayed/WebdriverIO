@@ -27,7 +27,14 @@ class BaseElement {
 	async isExistInEl(value) {
 		return (await this.locator.getText()).includes(value);
 	}
-	async text() {
+	async text(ms) {
+		await this.locator.waitUntil(() => {
+			return this.locator.isDisplayed()
+		}, {
+			interval: ms,
+			timeout: ms,
+			timeoutMsg: `${this.name} isn't displayed yet`
+		});
 		return (await this.locator.getText()).trim();
 	}
 
