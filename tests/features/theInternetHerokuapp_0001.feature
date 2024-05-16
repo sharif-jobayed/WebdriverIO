@@ -23,3 +23,11 @@ Feature: User Login
 
     When I click 'DeleteButton' on the 'AddRemoveElementsPage'
     Then 'DeleteButton' is not displayed on the 'AddRemoveElementsPage'
+
+  @Test-0003
+  Scenario: Basic Auth (user and pass: admin)
+    When I click 'BasicAuthLink' on the 'HomePage'
+    Then 'BasicAuthPage' is loaded
+    
+    When I enter 'admin' as Username & 'admin' as Password & accept it on the 'BasicAuthPage'
+    Then 'BasicAuthConfirmationMessage' text is displayed on the 'BasicAuthPage'

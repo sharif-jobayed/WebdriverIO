@@ -21,6 +21,18 @@ class BasePage {
 			timeoutMsg: `Page did not load within ${ms} milliseconds`,
 		});
 	}
+	async waitForAlert(ms) {
+		await browser.waitUntil(() => {
+			return browser.isAlertOpen();
+		}, {
+			interval: ms,
+			timeout: ms,
+			timeoutMsg: `The alert is not open yet`
+		});
+	}	
+	async handleBasicAuth(userName, passWord) {
+		await browser.url(`${userName}:${passWord}@${this.url}`);
+	}
 
 }
 

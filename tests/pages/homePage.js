@@ -19,6 +19,7 @@ class HomePage extends BasePage {
 			`//a[@href="/basic_auth"]`,
 			`BasicAuthLink`
 		);
+		
 	}
 
 }

@@ -27,6 +27,9 @@ class BaseElement {
 	async isExistInEl(value) {
 		return (await this.locator.getText()).includes(value);
 	}
+	async text() {
+		return (await this.locator.getText()).trim();
+	}
 
 }
 
