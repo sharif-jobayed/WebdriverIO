@@ -9,7 +9,7 @@ class BasicAuthPage extends BasePage {
 
 		this.ConfirmationMessage = new BaseElement(
 			`//div[contains(@class,"example")]/p`,
-			`ConfirmationMsg`
+			`ConfirmationMessage`
 		);
 	}
 
