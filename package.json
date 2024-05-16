@@ -11,7 +11,7 @@
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js",
-        "exsfc": "npx wdio wdio.conf.js --cucumberOpts.tagExpression='@Test-'"
+        "exsfc": "npx wdio wdio.conf.js --cucumberOpts.tagExpression='@Test-0001'"
     },
     "dependencies": {
         "chai": "^4.4.1"
