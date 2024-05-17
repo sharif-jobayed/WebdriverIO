@@ -1,5 +1,5 @@
 {
-    "name": "webdriverio-tests",
+    "name": "webdriverio-bdd",
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
@@ -11,7 +11,7 @@
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js",
-        "exsfc": "npx wdio wdio.conf.js --cucumberOpts.tagExpression='@Test-0001'"
+        "exsfc": "npx wdio wdio.conf.js --cucumberOpts.tagExpression='@Test-0003'"
     },
     "dependencies": {
         "chai": "^4.4.1"
