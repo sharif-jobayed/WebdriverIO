@@ -68,7 +68,7 @@ Then(
 	/^'(.*)' text is displayed on the '(.*)'$/,
 	async(theText, page) => {
 		const currentPage = pages[page];
-		
+		await currentPage.isPageLoaded(3000);
 		assert.equal(await currentPage.ConfirmationMessage.text(3000), await pageMessages[theText], `The confirmation message is not shown yet`);
 	}
 );
