@@ -9,19 +9,19 @@ class Pages {
 	constructor() {
 
 		this.HomePage = new HomePage(
-			`https://the-internet.herokuapp.com`,
+			``,
 			`HomePage`
 		);
 		this.ABTestingPage = new ABTestingPage(
-			`https://the-internet.herokuapp.com/abtest`,
+			`abtest`,
 			`ABTestingPage`
 		);
 		this.AddRemoveElementsPage = new AddRemoveElementsPage(
-			`https://the-internet.herokuapp.com/add_remove_elements`,
+			`add_remove_elements`,
 			`AddRemoveElementsPage`
 		);
 		this.BasicAuthPage = new BasicAuthPage(
-			`https://the-internet.herokuapp.com/basic_auth`,
+			`basic_auth`,
 			`BasicAuthPage`
 		);
 

@@ -1,7 +1,7 @@
 class BasePage {
 
 	constructor(pageURL, pageName) {
-		this.url = pageURL;
+		this.url = `${browser.options.baseUrl}${pageURL}`;
 		this.name = pageName;
 		this.title = browser.getTitle();
 	}
