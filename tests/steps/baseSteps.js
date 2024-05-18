@@ -19,7 +19,7 @@ When(
 	/^I click '(.*)' on the '(.*)'$/,
 	async (element, page) => {
 		const currentElement = pages[page][element];
-		return currentElement.clickEl();
+		await currentElement.clickEl();
 	}
 );
 Then(
@@ -54,20 +54,21 @@ When(
 	/^I wait for the '(.*)' to open on the '(.*)'$/,
 	async (theAlert, page) => {
 		const currentPage = pages[page];
-		return currentPage.waitForAlert(3000);
+		await currentPage.waitForAlert(3000);
 	}
 );
 When(
 	/^I enter '(.*)' as Username & '(.*)' as Password & accept it on the '(.*)'$/,
 	async (username, password, page) => {
 		const currentPage = pages[page];
-		return currentPage.handleBasicAuth(username, password);
+		await currentPage.handleBasicAuth(username, password);
 	}
 );
 Then(
 	/^'(.*)' text is displayed on the '(.*)'$/,
 	async(theText, page) => {
 		const currentPage = pages[page];
+		
 		assert.equal(await currentPage.ConfirmationMessage.text(3000), await pageMessages[theText], `The confirmation message is not shown yet`);
 	}
 );

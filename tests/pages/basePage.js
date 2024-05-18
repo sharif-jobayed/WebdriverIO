@@ -9,6 +9,9 @@ class BasePage {
 	async goToURL() {
 		await browser.url(this.url);
 	}
+	async currentURL() {
+		return browser.getUrl();
+	}
 	async isPageOpen() {
 		return this.title !== ``;
 	}
@@ -31,7 +34,7 @@ class BasePage {
 		});
 	}	
 	async handleBasicAuth(userName, passWord) {
-		await browser.url(`${userName}:${passWord}@${this.url}`);
+		await browser.url(`https://${userName}:${passWord}@${this.url.replace(`https://`, ``)}`);
 	}
 
 }
