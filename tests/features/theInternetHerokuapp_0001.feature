@@ -36,3 +36,4 @@ Feature: User Login
   Scenario: Broken Images
     When I click 'BrokenImagesLink' on the 'HomePage'
     Then 'BrokenImagesPage' is loaded
+    
