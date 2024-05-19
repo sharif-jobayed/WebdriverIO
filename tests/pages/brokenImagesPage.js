@@ -11,17 +11,17 @@ class BrokenImagesPage extends BasePage {
 			`//*[contains(@class,"example")]/img`,
 			`Images`
 		);
-		this.imageOne = new BaseElement(
+		this.ImageOne = new BaseElement(
 			`//img[contains(@src,"asdf.jpg")]`,
-			`imageOne`
+			`ImageOne`
 		)
-		this.imageTwo = new BaseElement(
+		this.ImageTwo = new BaseElement(
 			`//img[contains(@src,"hjkl.jpg")]`,
-			`imageTwo`
+			`ImageTwo`
 		)
-		this.imageThree = new BaseElement(
+		this.ImageThree = new BaseElement(
 			`//img[contains(@src,"img/avatar-blank.jpg")]`,
-			`imageThree`
+			`ImageThree`
 		)
 	}
 
