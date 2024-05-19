@@ -19,6 +19,10 @@ class HomePage extends BasePage {
 			`//a[@href="/basic_auth"]`,
 			`BasicAuthLink`
 		);
+		this.BrokenImagesLink = new BaseElement(
+			`//a[@href="/broken_images"]`,
+			`BrokenImagesLink`
+		);
 		
 	}
 

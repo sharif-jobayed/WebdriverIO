@@ -2,6 +2,7 @@ const HomePage = require('../pages/homePage.js');
 const ABTestingPage = require('../pages/abTestingPage.js');
 const AddRemoveElementsPage = require('../pages/addRemoveElementsPage.js');
 const BasicAuthPage = require('../pages/basicAuthPage.js');
+const BrokenImagesPage = require('../pages/brokenImagesPage.js');
 
 
 class Pages {
@@ -23,6 +24,10 @@ class Pages {
 		this.BasicAuthPage = new BasicAuthPage(
 			`basic_auth`,
 			`BasicAuthPage`
+		);
+		this.BrokenImagesPage = new BrokenImagesPage(
+			`broken_images`,
+			`BrokenImagesPage`
 		);
 
 	}

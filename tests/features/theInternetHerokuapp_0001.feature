@@ -31,3 +31,8 @@ Feature: User Login
     
     When I enter 'admin' as Username & 'admin' as Password & accept it on the 'BasicAuthPage'
     Then 'BasicAuthConfirmationMessage' text is displayed on the 'BasicAuthPage'
+
+  @Test-0004
+  Scenario: Broken Images
+    When I click 'BrokenImagesLink' on the 'HomePage'
+    Then 'BrokenImagesPage' is loaded
