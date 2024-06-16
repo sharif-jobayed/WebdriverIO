@@ -1,4 +1,3 @@
-// import BasePage from "./basePage";
 const BasePage = require('../pages/basePage.js');
 
 class ABTestingPage extends BasePage {
