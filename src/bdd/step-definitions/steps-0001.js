@@ -1,8 +1,14 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
+const ObjectProcessor = require('../../utils/objectProcessor.js');
+
+const objectProcessor = new ObjectProcessor();
 
 Given(
 	/^I am on the '(.*)' page$/,
-	async function (pageName) {}
+	async function (pageName) {
+		const page = await objectProcessor.pageProcessor(pageName);
+		return page.open();
+	}
 );
 
 When(
