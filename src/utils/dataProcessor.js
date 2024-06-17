@@ -1,7 +1,7 @@
 const HomePage = require('../pages/homePage.js');
 const ABTestingPage = require('../pages/abTestingPage.js');
 
-class ObjectProcessor {
+class DataProcessor {
   constructor() {
     this.pages = {
       home: new HomePage(),
@@ -20,4 +20,4 @@ class ObjectProcessor {
   }
 }
 
-module.exports = ObjectProcessor;
+module.exports = DataProcessor;

@@ -1,24 +1,31 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
-const ObjectProcessor = require('../../utils/objectProcessor.js');
+const { assert, expect } = require('chai');
+const DataProcessor = require('../../utils/dataProcessor.js');
 
-const objectProcessor = new ObjectProcessor();
+const dataProcessor = new DataProcessor();
 
 Given(
 	/^I am on the '(.*)' page$/,
 	async function (pageName) {
-		const page = await objectProcessor.pageProcessor(pageName);
-		return page.open();
+		const page = await dataProcessor.pageProcessor(pageName);
+		return page.goToPage();
 	}
 );
 
 When(
 	/^I click the '(.*)' link on the '(.*)' page$/,
-	async function (link, pageName) {}
+	async function (link, pageName) {
+		const page = await dataProcessor.pageProcessor(pageName);
+		return (await page.getLinkByText(link)).doClick();
+	}
 );
 
 Then(
 	/^the '(.*)' page is opened$/,
-	async function (pageName) {}
+	async function (pageName) {
+		const page = await dataProcessor.pageProcessor(pageName);
+		expect(browser).toHaveUrl(await page.currentURL(), `Page isn't open`);
+	}
 );
 
 Then(
