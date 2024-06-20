@@ -1,4 +1,4 @@
-exports.config = {
+const config = {
     //
     // ====================
     // Runner Configuration
@@ -85,7 +85,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    baseUrl: 'https://the-internet.herokuapp.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -231,8 +231,9 @@ exports.config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: async function (world, context) {
+        await browser.setWindowSize(1440, 900);
+    },
     /**
      *
      * Runs before a Cucumber Step.
@@ -332,3 +333,5 @@ exports.config = {
     // afterAssertion: function(params) {
     // }
 }
+
+export default {config};
