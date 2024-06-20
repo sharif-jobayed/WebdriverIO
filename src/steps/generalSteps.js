@@ -1,6 +1,6 @@
 
 import {Given, When, Then} from '@wdio/cucumber-framework';
-import { assert } from 'chai';
+import { assert, expect } from 'chai';
 
 Given(
 	/^I am on the '(.*)' page$/,
