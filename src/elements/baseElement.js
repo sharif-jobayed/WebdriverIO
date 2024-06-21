@@ -1,5 +1,6 @@
 
-import {$, $$} from '@wdio/globals';
+import { $, $$ } from '@wdio/globals';
+import { timeoutInMS } from '../utils/constants.js';
 
 class BaseElement {
 	constructor(elLocator, elName) {
@@ -34,6 +35,15 @@ class BaseElement {
 	async itsName() {
 		return this.elName;
 	}
+	async waitForIt() {
+		return (await this.elLocator).waitForExist({
+			timeout: timeoutInMS.minimum,
+			timeoutMsg: `${this.elName} isn't ready in ${timeoutInMS.minimum} milliseconds`,
+		});
+	}
+	async isVisible() {
+		return (await this.elLocator).isDisplayed();
+	}
 }
 
-export {BaseElement};
+export { BaseElement }

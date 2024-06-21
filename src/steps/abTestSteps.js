@@ -1,5 +1,5 @@
 
-import {Given, When, Then} from '@wdio/cucumber-framework'
+import { Given, When, Then } from '@wdio/cucumber-framework'
 
 Then(
 	/^I see '(.*)' is present in the '(.*)' heading on '(.*)' page$/,
