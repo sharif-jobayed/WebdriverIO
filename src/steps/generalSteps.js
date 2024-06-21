@@ -33,6 +33,6 @@ When(
 	/^I click on the '(.*)' link on '(.*)' page$/,
 	async function (linkText, pageName) {
 		const page = await converters.getPage(pageName);
-		return page.getLinkByText(linkText).doClick();
+		return (await page.getLinkByText(linkText)).doClick();
 	}
 );

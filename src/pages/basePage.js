@@ -7,11 +7,8 @@ class BasePage {
 		this.pageURL = pageURL;
 		this.pageName = pageName;
 		this.linkByText = (text) => {
-			return new Element(
-				`//a[text()='${text}']`,
-				`${text} link`
-			);
-		};
+			return new BaseElement(`//a[text()='${text}']`, `${text} link`);
+		}
 	}
 
 	async openPage() {
