@@ -13,10 +13,10 @@ class Converters {
 				throw new Error(`Invalid page request: ${value}`);
 		}
 	}
-	
-	async getElement(value) {
 
-		throw new Error('getElement method not implemented');
+	async getElement(value) {
+		// To set yet...
+		throw new Error(`Invalid element request: ${value}`);
 	}
 }
 
