@@ -1,10 +1,17 @@
 
 import { timeoutInMS } from "../utils/constants.js";
+import { BaseElement } from "../elements/baseElement.js";
 
 class BasePage {
 	constructor(pageURL, pageName) {
 		this.pageURL = pageURL;
 		this.pageName = pageName;
+		this.linkByText = (text) => {
+			return new Element(
+				`//a[text()='${text}']`,
+				`${text} link`
+			);
+		};
 	}
 
 	async openPage() {
@@ -24,9 +31,13 @@ class BasePage {
 			},
 			{
 				timeout: timeoutInMS.maximum,
-				timeoutMsg: `${this.pageName} did not load within ${timeoutInMS.maximum} milliseconds`
+				timeoutMsg: `${this.pageName} did not load within ${timeoutInMS.maximum} milliseconds`,
 			}
 		);
+		return true;
+	}
+	async getLinkByText(text) {
+		return this.linkByText(text);
 	}
 }
 
