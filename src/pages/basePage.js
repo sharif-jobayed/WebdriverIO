@@ -14,12 +14,10 @@ class BasePage {
 	async openPage() {
 		return browser.url(this.pageURL);
 	}
-
 	async isPageOpen() {
 		const currentUrl = await browser.getUrl();
 		return currentUrl.includes(this.pageURL);
 	}
-
 	async isPageLoaded() {
 		await browser.waitUntil(
 			async () => {

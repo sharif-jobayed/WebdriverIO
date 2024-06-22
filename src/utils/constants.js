@@ -5,4 +5,8 @@ const timeoutInMS = {
 	maximum: 70000,
 }
 
-export { timeoutInMS }
+const shortText = {
+	abTestHeading: `A/B Test Control`,
+}
+
+export { timeoutInMS, shortText }
