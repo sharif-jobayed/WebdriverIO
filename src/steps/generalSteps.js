@@ -36,3 +36,11 @@ When(
 		return (await page.getLinkByText(linkText)).doClick();
 	}
 );
+
+When(
+	/^I click on the '(.*)' button on '(.*)' page$/,
+	async function (buttonText, pageName) {
+		const page = await converters.getPage(pageName);
+		return (await page.getButtonText(buttonText)).doClick();
+	}
+);
