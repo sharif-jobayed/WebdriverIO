@@ -9,6 +9,9 @@ class BasePage {
 		this.linkByText = (text) => {
 			return new BaseElement(`//a[text()='${text}']`, `${text} link`);
 		}
+		this.btnByText = (text) => {
+			return new BaseElement(`//button[text()='${text}']`,`${text} button`);
+		}
 	}
 
 	async openPage() {
@@ -33,6 +36,9 @@ class BasePage {
 	}
 	async getLinkByText(text) {
 		return this.linkByText(text);
+	}
+	async getButtonText(text) {
+		return this.btnByText(text);
 	}
 }
 
