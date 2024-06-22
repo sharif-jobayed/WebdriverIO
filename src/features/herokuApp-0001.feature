@@ -22,3 +22,5 @@ Feature: The Internet HerokuApp test-0001
 		Then I am on the 'Add/Remove Elements' page
 		And 'Add/Remove Elements' page is open
 		And 'Add/Remove Elements' page is loaded
+
+		When I click on the 'Add Element' button on 'Add/Remove Elements' page
