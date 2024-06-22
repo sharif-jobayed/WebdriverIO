@@ -1,5 +1,5 @@
 
-import { BasePage } from "./basePage";
+import { BasePage } from "./basePage.js";
 
 class AddRemoveElementsPage extends BasePage {
 	constructor() {
