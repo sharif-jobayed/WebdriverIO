@@ -5,8 +5,14 @@ const timeoutInMS = {
 	maximum: 70000,
 }
 
+const pageNames = {
+	mainPage: `Main`,
+	abTestingPage: `A/B Testing`,
+	addRemoveElementsPage: `Add/Remove Elements`,
+}
+
 const shortText = {
 	abTestHeading: `A/B Test Control`,
 }
 
-export { timeoutInMS, shortText }
+export { timeoutInMS, pageNames, shortText }

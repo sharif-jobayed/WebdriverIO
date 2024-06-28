@@ -43,7 +43,7 @@ When(
 		const page = await converters.getPage(pageName);
 		const buttonElement = await page.getButtonByText(buttonText);
 		await buttonElement.waitForIt();
-		await buttonElement.doClick();
+		return buttonElement.doClick();
 	}
 );
 
