@@ -20,8 +20,12 @@ class BasePage {
 		);
 	}
 
-	async openPage() {
-		await browser.url(this.pageURL);
+	async openPage(pageURL) {
+		if (pageURL) {
+			return browser.url(pageURL);
+		} else {
+			return browser.url(this.pageURL);
+		}
 	}
 	async isPageOpen() {
 		const currentUrl = await browser.getUrl();

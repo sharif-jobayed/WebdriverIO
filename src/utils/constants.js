@@ -7,6 +7,7 @@ const timeoutInMS = {
 
 const shortText = {
 	abTestHeading: `A/B Test Control`,
+	basicAuthCongratulation: `Congratulations!`,
 }
 
 export { timeoutInMS, shortText }

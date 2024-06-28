@@ -7,4 +7,4 @@ class AddRemoveElementsPage extends BasePage {
 	}
 }
 
-export {AddRemoveElementsPage}
+export { AddRemoveElementsPage }

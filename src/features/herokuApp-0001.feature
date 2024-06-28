@@ -28,3 +28,13 @@ Feature: The Internet HerokuApp test-0001
 
 		When I click on the 'Delete' button on 'Add/Remove Elements' page
 		Then I see 'Delete' button is not present on 'Add/Remove Elements' page
+
+	@Test-0003
+	Scenario: Test Basic Auth page
+		When I click on the 'Basic Auth' link on 'Main' page
+		Then I am on the 'Basic Auth' page
+		And 'Basic Auth' page is open
+		And 'Basic Auth' page is loaded
+
+		When I handle 'This site is asking you to sign in.' prompt on 'Basic Auth' page
+		Then I see 'Congratulations!' is present in the Paragraph on 'Basic Auth' page
