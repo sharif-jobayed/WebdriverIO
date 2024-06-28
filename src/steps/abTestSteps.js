@@ -1,6 +1,6 @@
 
-import { Given, When, Then } from '@wdio/cucumber-framework';
-import { assert, expect } from 'chai';
+import { Then } from '@wdio/cucumber-framework';
+import { assert } from 'chai';
 import { Converters } from '../utils/converters.js';
 
 const converters = new Converters();
