@@ -27,6 +27,13 @@ class BasePage {
 			return browser.url(this.pageURL);
 		}
 	}
+	async openInNewWindow(pageURL) {
+		if(pageURL) {
+			return browser.newWindow(pageURL);
+		} else {
+			return browser.newWindow();
+		}
+	}
 	async isPageOpen() {
 		const currentUrl = await browser.getUrl();
 		return currentUrl.includes(this.pageURL);

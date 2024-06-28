@@ -23,4 +23,3 @@ class BasicAuthPage extends BasePage {
 }
 
 export { BasicAuthPage };
-
