@@ -6,29 +6,27 @@ class BasePage {
 	constructor(pageURL, pageName) {
 		this.pageURL = pageURL;
 		this.pageName = pageName;
-		this.linkByText = (text) => {
-			return new BaseElement(
-				`//a[text()='${text}']`,
-				`${text} link`
-			);
-		};
-		this.btnByText = (text) => {
-			return new BaseElement(
-				`//button[text()='${text}']`,
-				`${text} button`
-			);
-		};
+	}
+	linkByText(text) {
+		return new BaseElement(
+			`//a[text()='${text}']`,
+			`${text} link`
+		);
+	}
+	btnByText(text) {
+		return new BaseElement(
+			`//button[text()='${text}']`,
+			`${text} button`
+		);
 	}
 
 	async openPage() {
 		await browser.url(this.pageURL);
 	}
-
 	async isPageOpen() {
 		const currentUrl = await browser.getUrl();
 		return currentUrl.includes(this.pageURL);
 	}
-
 	async isPageLoaded() {
 		await browser.waitUntil(
 			async () => {
@@ -42,19 +40,11 @@ class BasePage {
 		);
 		return true;
 	}
-
 	async getLinkByText(text) {
-		const linkElement = this.linkByText(text);
-		// console.log(linkElement);
-		await linkElement.waitForIt();
-		return linkElement;
+		return this.linkByText(text);
 	}
-
 	async getButtonByText(text) {
-		const buttonElement = this.btnByText(text);
-		// console.log(buttonElement);
-		await buttonElement.waitForIt();
-		return buttonElement;
+		return this.btnByText(text);
 	}
 }
 
