@@ -25,3 +25,6 @@ Feature: The Internet HerokuApp test-0001
 
 		When I click on the 'Add Element' button on 'Add/Remove Elements' page
 		Then I see 'Delete' button is present on 'Add/Remove Elements' page
+
+		When I click on the 'Delete' button on 'Add/Remove Elements' page
+		Then I see 'Delete' button is not present on 'Add/Remove Elements' page

@@ -56,3 +56,12 @@ Then(
 		assert.isTrue(await buttonElement.isVisible(), `${buttonText} button is not visible yet`);
 	}
 );
+
+Then(
+	/^I see '(.*)' button is not present on '(.*)' page$/,
+	async function (buttonText, pageName) {
+		const page = await converters.getPage(pageName);
+		const buttonElement = await page.getButtonByText(buttonText);
+		assert.isFalse(await buttonElement.isVisible(), `${buttonText} button is not visible yet`);
+	}
+);
