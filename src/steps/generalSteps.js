@@ -46,3 +46,13 @@ When(
 		await buttonElement.doClick();
 	}
 );
+
+Then(
+	/^I see '(.*)' button is present on '(.*)' page$/,
+	async function (buttonText, pageName) {
+		const page = await converters.getPage(pageName);
+		const buttonElement = await page.getButtonByText(buttonText);
+		await buttonElement.waitForIt();
+		assert.isTrue(await buttonElement.isVisible(), `${buttonText} button is not visible yet`);
+	}
+);
