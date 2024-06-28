@@ -10,40 +10,48 @@ class BaseElement {
 	}
 
 	async doClick() {
-		return (await this.elLocator).click();
+		await (await this.elLocator).click();
 	}
+
 	async clearAndType(text) {
-		(await this.elLocator).clearValue();
-		return (await this.elLocator).setValue(text);
+		const element = await this.elLocator;
+		await element.clearValue();
+		await element.setValue(text);
 	}
+
 	async hoverOver() {
-		return (await this.elLocator).moveTo();
+		await (await this.elLocator).moveTo();
 	}
+
 	async scrollTo() {
-		return (await this.elLocator).scrollIntoView();
+		await (await this.elLocator).scrollIntoView();
 	}
+
 	async getAll() {
-		let elements = [];
-		await this.elLocators.forEach((i) => {
-			elements.push(i);
-		});
+		const elements = await this.elLocators;
 		return elements;
 	}
+
 	async itsText() {
-		return (await this.elLocator).getText();
+		const element = await this.elLocator;
+		return element.getText();
 	}
+
 	async itsName() {
 		return this.elName;
 	}
+
 	async waitForIt() {
-		return (await this.elLocator).waitForExist({
+		await (await this.elLocator).waitForExist({
 			timeout: timeoutInMS.minimum,
 			timeoutMsg: `${this.elName} isn't ready in ${timeoutInMS.minimum} milliseconds`,
 		});
 	}
+
 	async isVisible() {
-		return (await this.elLocator).isDisplayed();
+		const element = await this.elLocator;
+		return element.isDisplayed();
 	}
 }
 
-export { BaseElement }
+export { BaseElement };
