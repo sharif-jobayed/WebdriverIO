@@ -41,6 +41,6 @@ When(
 	/^I click on the '(.*)' button on '(.*)' page$/,
 	async function (buttonText, pageName) {
 		const page = await converters.getPage(pageName);
-		return (await page.getButtonText(buttonText)).doClick();
+		return (await page.getButtonByText(buttonText)).doClick();
 	}
 );
