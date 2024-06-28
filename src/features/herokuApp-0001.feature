@@ -36,5 +36,5 @@ Feature: The Internet HerokuApp test-0001
 		And 'Basic Auth' page is open
 		And 'Basic Auth' page is loaded
 
-		When I handle 'Basic Authentication' prompt on 'Basic Auth' page
+		When I type 'admin' as username and 'admin' as password in 'Basic Authentication' prompt on 'Basic Auth' page
 		Then I see 'Congratulations!' is present in the Paragraph on 'Basic Auth' page

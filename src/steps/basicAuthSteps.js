@@ -7,10 +7,10 @@ import { shortText } from "../utils/constants.js";
 const converters = new Converters();
 
 When(
-	/^I handle '(.*)' prompt on '(.*)' page$/,
-	async function (promptName, pageName) {
+	/^I type '(.*)' as username and '(.*)' as password in 'Basic Authentication' prompt on '(.*)' page$/,
+	async function (username, password, pageName) {
 		const page = await converters.getPage(pageName);
-		return page.handleBaseAuth(`admin`, `admin`);
+		return page.handleBaseAuth(username, password);
 	}
 );
 
