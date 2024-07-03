@@ -12,4 +12,3 @@ Feature: IdeaScale test
   @Test-0001
   Scenario: Accept cookies
     When I click on the 'Accept' button on the 'Start' page
-    
