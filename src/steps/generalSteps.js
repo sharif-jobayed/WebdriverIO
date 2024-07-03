@@ -1,6 +1,11 @@
 
 const {Given, When, Then} = require('@wdio/cucumber-framework');
 const {assert} = require('chai');
+const {Pages} = require('../utils/pages.js');
+
+const PAGE = (page) => {
+	return new Pages(page);
+}
 
 Given(
 	/^I am on the '(.*)' page$/,
