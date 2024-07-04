@@ -1,21 +1,19 @@
 {
-  "name": "WebdriverIO",
+  "name": "webdriverio",
   "version": "1.0.0",
+  "description": "Repository of WebdriverIO practices and works.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "myTest": "wdio run wdio.conf.js",
-    "testTag": "npx wdio run wdio.conf.js --cucumberOpts.tagExpression='@Test-0000'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Sharif Jobayed",
   "license": "ISC",
-  "description": "A personal project to test IdeaScale",
   "devDependencies": {
     "@wdio/allure-reporter": "^7.33.0",
     "@wdio/cli": "^7.36.0",
     "@wdio/cucumber-framework": "^7.34.0",
-    "@wdio/globals": "^8.39.0",
+    "@wdio/globals": "^8.39.1",
     "@wdio/local-runner": "^7.36.0",
     "@wdio/logger": "^7.26.0",
     "@wdio/protocols": "^7.27.0",

@@ -1,11 +1,6 @@
 
-const {Given, When, Then} = require('@wdio/cucumber-framework');
-const {assert} = require('chai');
-const {Pages} = require('../utils/pages.js');
-
-const PAGE = (page) => {
-	return new Pages(page);
-}
+const {Given, When, Then} = require ('@wdio/cucumber-framework');
+const {assert} = require ('chai');
 
 Given(
 	/^I am on the '(.*)' page$/,
@@ -15,12 +10,7 @@ Then(
 	/^The '(.*)' page is open$/,
 	async (pageName) => {}
 );
-When(
+Then(
 	/^The '(.*)' page is loaded$/,
 	async (pageName) => {}
 );
-When(
-	/^I click on the '(.*)' button on the '(.*)' page$/,
-	async (buttonText, pageName) => {}
-);
-
