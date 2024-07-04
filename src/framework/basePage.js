@@ -14,9 +14,20 @@ class BasePage {
 		return await browser.getUrl() === this.pURL;
 	}
 
-	async isPageLoaded() {
-		return await browser.execute(() => document.readyState === 'complete');
+	async isPageLoaded(timeout = 10000) {
+		await browser.waitUntil(
+			async () => {
+				const readyState = await browser.execute(() => document.readyState);
+				return readyState === 'complete';
+			},
+			{
+				timeout,
+				timeoutMsg: 'Page did not load within the specified time'
+			}
+		);
+		return await browser.execute(() => document.readyState);
 	}
+
 
 	async openInNewWindow(url) {
 		await browser.newWindow(url);
@@ -81,6 +92,13 @@ class BasePage {
 
 	async takeScreenshot(fileName) {
 		await browser.saveScreenshot(fileName);
+	}
+
+	async getLinkByText(text) {
+		return new BaseElement(
+			`//a[contains(text(),'${text}')]`,
+			`${text} link`
+		);
 	}
 }
 

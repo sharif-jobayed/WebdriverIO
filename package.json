@@ -4,7 +4,8 @@
   "description": "Repository of WebdriverIO practices and works.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tag": "npx wdio run wdio.conf.js --cucumberOpts.tagExpression '@Test-0000'"
   },
   "keywords": [],
   "author": "Sharif Jobayed",
