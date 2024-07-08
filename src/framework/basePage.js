@@ -1,5 +1,5 @@
 const { BaseElement } = require('../framework/baseElement.js');
-const {MS} = require('../framework/utils/constants.js');
+const { MS } = require('../framework/utils/constants.js');
 
 class BasePage {
 	constructor(pageURL, pageName) {
@@ -23,12 +23,11 @@ class BasePage {
 			},
 			{
 				timeout: MS.max,
-				timeoutMsg: `Page did not load within the specified time`
+				timeoutMsg: `The ${this.pName} page is not fully loaded yet`
 			}
 		);
-		return await browser.execute(() => document.readyState);
+		return await browser.execute(() => document.readyState === `complete`);
 	}
-
 
 	async openInNewWindow(url) {
 		await browser.newWindow(url);
