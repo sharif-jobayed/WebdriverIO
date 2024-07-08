@@ -18,13 +18,13 @@ Then(
 	/^The '(.*)' page is open$/,
 	async (pageName) => {
 		const page = await pages(pageName);
-		assert.isTrue(await page.isPageOpen(), `The ${pageName} is not open yet`);
+		assert.isTrue(await page.isPageOpen(), `The ${pageName} page is not open yet`);
 	}
 );
 Then(
 	/^The '(.*)' page is loaded$/,
 	async (pageName) => {
 		const page = await pages(pageName);
-		assert.isTrue(await page.isPageLoaded(), `The ${pageName} is not fully loaded yet`);
+		assert.isTrue(await page.isPageLoaded(), `The ${pageName} page is not fully loaded yet`);
 	}
 );

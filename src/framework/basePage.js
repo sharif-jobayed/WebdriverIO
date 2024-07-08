@@ -1,4 +1,5 @@
 const { BaseElement } = require('../framework/baseElement.js');
+const {MS} = require('../framework/utils/constants.js');
 
 class BasePage {
 	constructor(pageURL, pageName) {
@@ -14,15 +15,15 @@ class BasePage {
 		return await browser.getUrl() === this.pURL;
 	}
 
-	async isPageLoaded(timeout = 10000) {
+	async isPageLoaded() {
 		await browser.waitUntil(
 			async () => {
 				const readyState = await browser.execute(() => document.readyState);
-				return readyState === 'complete';
+				return readyState === `complete`;
 			},
 			{
-				timeout,
-				timeoutMsg: 'Page did not load within the specified time'
+				timeout: MS.max,
+				timeoutMsg: `Page did not load within the specified time`
 			}
 		);
 		return await browser.execute(() => document.readyState);
