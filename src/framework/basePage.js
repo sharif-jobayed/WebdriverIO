@@ -22,7 +22,7 @@ class BasePage {
 				return readyState === `complete`;
 			},
 			{
-				timeout: MS.max,
+				timeout: MS.med,
 				timeoutMsg: `The ${this.pName} page is not fully loaded yet`
 			}
 		);
