@@ -1,4 +1,4 @@
-const {MS} = require('../framework/utils/constants.js');
+const { MS } = require('../framework/utils/constants.js');
 
 class BaseElement {
 	constructor(elementLocator, elementName) {
@@ -41,7 +41,7 @@ class BaseElement {
 	}
 
 	async waitUntil(condition) {
-		await browser.waitUntil(condition, { timeout:MS.min, timeoutMsg: `${this.elName} did not meet the ${condition} condition` });
+		await browser.waitUntil(condition, { timeout: MS.min, timeoutMsg: `${this.elName} did not meet the ${condition} condition` });
 	}
 
 	async getText() {
@@ -68,12 +68,12 @@ class BaseElement {
 		await this.elLocator.rightClick();
 	}
 
-	async waitForDisplayed() {
-		await this.elLocator.waitForDisplayed({ timeout:MS.min });
+	async waitForDisplayed(timeout = MS.min) {
+		await this.elLocator.waitForDisplayed({ timeout });
 	}
 
-	async waitForExist() {
-		await this.elLocator.waitForExist({ timeout:MS.min });
+	async waitForExist(timeout = MS.min) {
+		await this.elLocator.waitForExist({ timeout });
 	}
 }
 

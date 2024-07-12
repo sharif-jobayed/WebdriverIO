@@ -8,5 +8,8 @@ const pages = (pageName) => {
 
 When(
 	/^I click on the '(.*)' button on the '(.*)' page$/,
-	async (button, pageName) => {}
+	async (buttonText, pageName) => {
+		const page = pages(pageName);
+		return (await page).acceptCookies(buttonText);
+	}
 );
