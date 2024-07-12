@@ -40,8 +40,8 @@ class BaseElement {
 		return await this.elLocators;
 	}
 
-	async waitUntil(condition) {
-		await browser.waitUntil(condition, { timeout: MS.min, timeoutMsg: `${this.elName} did not meet the ${condition} condition` });
+	async waitUntil(condition, timeout = MS.min) {
+		await browser.waitUntil(condition, { timeout, timeoutMsg: `${this.elName} did not meet the ${condition} condition` });
 	}
 
 	async getText() {
