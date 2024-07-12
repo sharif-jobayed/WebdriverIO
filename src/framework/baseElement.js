@@ -1,4 +1,3 @@
-const { $, $$ } = require('@wdio/globals');
 const {MS} = require('../framework/utils/constants.js');
 
 class BaseElement {
