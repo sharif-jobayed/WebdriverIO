@@ -68,11 +68,11 @@ class BaseElement {
 		await this.elLocator.rightClick();
 	}
 
-	async waitForDisplayed(timeout = MS.min) {
+	async waitTillVisible(timeout = MS.min) {
 		await this.elLocator.waitForDisplayed({ timeout });
 	}
 
-	async waitForExist(timeout = MS.min) {
+	async waitTillIsThere(timeout = MS.min) {
 		await this.elLocator.waitForExist({ timeout });
 	}
 }

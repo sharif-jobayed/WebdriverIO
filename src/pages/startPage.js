@@ -8,11 +8,19 @@ class StartPage extends BasePage {
 			`https://ideascale.com/`,
 			`Start page`
 		);
+
+		this.cookiesPopUp = new BaseElement(
+			`//div[@id="cookie-law-info-bar"]`,
+			`Cookies popup`
+		);
 	}
 
 	async acceptCookies(buttonText) {
-		await (await this.getLinkByText(buttonText)).waitForDisplayed(MS.max);
+		await (await this.getLinkByText(buttonText)).waitTillVisible(MS.max);
 		return (await this.getLinkByText(buttonText)).doClick();
+	}
+	async isCookiesPopUpVisible() {
+		return this.cookiesPopUp.isVisible();
 	}
 }
 

@@ -9,7 +9,14 @@ const pages = (pageName) => {
 When(
 	/^I click on the '(.*)' button on the '(.*)' page$/,
 	async (buttonText, pageName) => {
-		const page = pages(pageName);
-		return (await page).acceptCookies(buttonText);
+		const page = await pages(pageName);
+		return page.acceptCookies(buttonText);
+	}
+);
+Then(
+	/^I see the cookies pop-up is not visible on the '(.*)' page$/,
+	async (pageName) => {
+		const page = await pages(pageName);
+		assert.isFalse(page.isCookiesPopUpVisible(), `Cookies pop-up is still visible`);
 	}
 );
