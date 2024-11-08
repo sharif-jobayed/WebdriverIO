@@ -1,3 +1,4 @@
+const {glob} = require("glob");
 exports.config = {
     //
     // ====================
@@ -131,7 +132,7 @@ exports.config = {
         // <string[]> (file/dir) require files before executing features
         require: [
             './src/framework/BaseSteps.js',
-            './src/step-definitions/HomePageSteps.js',
+            ...glob.sync('./src/step-definitions/**/**/**/**/*.js'),
         ],
         // <boolean> show full backtrace for errors
         backtrace: false,
@@ -150,7 +151,7 @@ exports.config = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: 'Test-0000',
+        tags: 'Test-0000',
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.

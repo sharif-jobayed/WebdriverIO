@@ -5,6 +5,8 @@ Feature: Home page
 
   Background:
     Given I am on the 'Home' page
+    Then The 'Home' page is open
+    And The 'Home' page is loaded
 
   @Test-0001
   Scenario: A visitor exploring the Home page
