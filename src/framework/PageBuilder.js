@@ -1,9 +1,10 @@
+const AppData = require('../data/appData.json');
 const {HomePage} = require("../pages/HomePage");
 
 class PageBuilder {
     constructor() {
         this.homePage = new HomePage(
-            "https://magento.softwaretestingboard.com/",
+            AppData.BaseURL,
             "Home page"
         );
     }

@@ -1,4 +1,5 @@
 const {glob} = require("glob");
+const AppData = require('./src/data/appData.json');
 exports.config = {
     //
     // ====================
@@ -52,7 +53,7 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-        {browserName: 'chrome'},
+        {browserName: AppData.Browsers[0]},
         // {browserName: 'firefox'}
     ],
     //
@@ -86,7 +87,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    baseUrl: 'https://magento.softwaretestingboard.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

@@ -1,0 +1,4 @@
+{
+  "Browsers": ["chrome", "firefox", "edge"],
+  "BaseURL": "browser.options.baseUrl"
+}
