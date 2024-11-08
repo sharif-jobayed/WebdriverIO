@@ -1,24 +1,24 @@
 {
   "name": "webdriverio",
+  "type": "module",
   "version": "1.0.0",
   "description": "Repository of WebdriverIO practices and works.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runTag": "npx wdio wdio.conf.js --cucumberOpts.tags=@Test-0000"
+    "wdio": "wdio run ./wdio.conf.js",
+    "tag": "npx wdio run ./wdio.conf.js --cucumberOpts.tags='@Test-0001'"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sharif Jobayed",
   "license": "ISC",
-  "dependencies": {
-    "@wdio/cli": "^8.40.6",
-    "chai": "^5.1.2"
-  },
   "devDependencies": {
     "@wdio/allure-reporter": "^9.2.2",
+    "@wdio/cli": "^9.2.11",
     "@wdio/cucumber-framework": "^9.2.8",
-    "@wdio/local-runner": "^9.2.8",
+    "@wdio/local-runner": "^9.2.11",
     "@wdio/spec-reporter": "^9.2.8",
+    "chai": "^5.1.2",
     "glob": "^11.0.0"
   }
 }

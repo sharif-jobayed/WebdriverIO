@@ -1,11 +1,13 @@
-const AppData = require('../data/appData.json');
-const {HomePage} = require("../pages/HomePage");
+// const AppData = require('../data/appData.json');
+// const {HomePage} = require("../pages/HomePage");
+import AppData from '../data/appData.json';
+import {HomePage} from '../pages/HomePage.js';
 
 class PageBuilder {
     constructor() {
         this.homePage = new HomePage(
-            AppData.BaseURL,
-            "Home page"
+            ``,
+            `Home page`
         );
     }
 
@@ -14,7 +16,7 @@ class PageBuilder {
         console.log(`Page Title: ${pageTitle}`);
 
         switch (page) {
-            case "home":
+            case `home`:
                 return this.homePage;
             default:
                 throw new Error(`Page Title: ${pageTitle} is not a valid page.`);
@@ -22,4 +24,4 @@ class PageBuilder {
     }
 }
 
-module.exports = {PageBuilder}
+export {PageBuilder};

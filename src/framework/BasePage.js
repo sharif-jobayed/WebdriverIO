@@ -55,6 +55,46 @@ class BasePage {
     async doRefresh() {
         await browser.refresh();
     }
+
+    async waitTillAlertIsOpen(timeout = 5000) {
+        return await browser.waitUntil(
+            async () => await browser.isAlertOpen(),
+            {timeout, timeoutMsg: 'Alert did not open within the specified timeout'}
+        );
+    }
+
+    async waitTillAlertIsClose(timeout = 5000) {
+        return await browser.waitUntil(
+            async () => !(await browser.isAlertOpen()),
+            {timeout, timeoutMsg: 'Alert did not close within the specified timeout'}
+        );
+    }
+
+    async acceptAlert() {
+        if (await browser.isAlertOpen()) {
+            await browser.acceptAlert();
+        }
+    }
+
+    async declineAlert() {
+        if (await browser.isAlertOpen()) {
+            await browser.dismissAlert();
+        }
+    }
+
+    async fillAlertAndAccept(text) {
+        if (await browser.isAlertOpen()) {
+            await browser.sendAlertText(text);
+            await browser.acceptAlert();
+        }
+    }
+
+    async backToDefaultWindow() {
+        const handles = await browser.getWindowHandles();
+        if (handles.length > 0) {
+            await browser.switchToWindow(handles[0]);
+        }
+    }
 }
 
-module.exports = {BasePage};
+export {BasePage};

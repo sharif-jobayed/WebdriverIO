@@ -1,4 +1,5 @@
-const {BasePage} = require("../framework/BasePage");
+// const {BasePage} = require("../framework/BasePage");
+import {BasePage} from '../framework/BasePage.js'
 
 class HomePage extends BasePage {
     constructor(pageURL, pageName) {
@@ -6,4 +7,4 @@ class HomePage extends BasePage {
     }
 }
 
-module.exports = {HomePage}
+export {HomePage};

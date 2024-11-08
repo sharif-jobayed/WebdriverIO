@@ -22,23 +22,23 @@ class BaseElement {
     }
 
     async doesExist() {
-        return await this.elementLocator.isExisting();
+        await (await this.getLocator()).isExisting();
     }
 
     async isVisible() {
-        return await this.elementLocator.isDisplayed();
+        await (await this.getLocator()).isDisplayed();
     }
 
     async isClickable() {
-        return await this.elementLocator.isClickable();
+        this.getLocator().isClickable();
     }
 
     async isEnabled() {
-        return await this.elementLocator.isEnabled();
+        this.getLocator().isEnabled();
     }
 
     async isSelected() {
-        return await this.elementLocator.isSelected();
+        await this.getLocator().isSelected();
     }
 
     async wait(timeout = 5000) {
@@ -46,86 +46,57 @@ class BaseElement {
     }
 
     async waitTillVisible(timeout = 5000) {
-        return await this.elementLocator.waitForDisplayed({ timeout });
+        await (await this.getLocator()).waitForDisplayed({timeout});
     }
 
     async waitTillInvisible(timeout = 5000) {
-        return await this.elementLocator.waitForDisplayed({ timeout, reverse: true });
+        await (await this.getLocator()).waitForDisplayed({timeout, reverse: true});
     }
 
     async waitTillExists(timeout = 5000) {
-        return await this.elementLocator.waitForExist({ timeout });
+        await (await this.getLocator()).waitForExist({timeout});
     }
 
     async waitTillEnabled(timeout = 5000) {
-        return await this.elementLocator.waitForEnabled({ timeout });
-    }
-
-    async waitTillAlertIsOpen(timeout = 5000) {
-        return await browser.waitUntil(
-            async () => await browser.isAlertOpen(),
-            { timeout, timeoutMsg: 'Alert did not open within the specified timeout' }
-        );
-    }
-
-    async waitTillAlertIsClose(timeout = 5000) {
-        return await browser.waitUntil(
-            async () => !(await browser.isAlertOpen()),
-            { timeout, timeoutMsg: 'Alert did not close within the specified timeout' }
-        );
+        this.getLocator().waitForEnabled({timeout});
     }
 
     async waitTillFrameIsOpen(timeout = 5000) {
         return await browser.waitUntil(
             async () => await this.doesExist(),
-            { timeout, timeoutMsg: 'Frame did not open within the specified timeout' }
+            {timeout, timeoutMsg: 'Frame did not open within the specified timeout'}
         );
     }
 
     async waitTillFrameIsClose(timeout = 5000) {
         return await browser.waitUntil(
             async () => !(await this.doesExist()),
-            { timeout, timeoutMsg: 'Frame did not close within the specified timeout' }
+            {timeout, timeoutMsg: 'Frame did not close within the specified timeout'}
         );
-    }
-
-    async acceptAlert() {
-        if (await browser.isAlertOpen()) {
-            await browser.acceptAlert();
-        }
-    }
-
-    async declineAlert() {
-        if (await browser.isAlertOpen()) {
-            await browser.dismissAlert();
-        }
-    }
-
-    async fillAlertAndAccept(text) {
-        if (await browser.isAlertOpen()) {
-            await browser.sendAlertText(text);
-            await browser.acceptAlert();
-        }
     }
 
     async doClick() {
         await this.waitTillVisible();
-        await this.elementLocator.click();
+        await this.getLocator().click();
     }
 
     async clearAndType(text) {
         await this.waitTillVisible();
-        await this.elementLocator.clearValue();
-        await this.elementLocator.setValue(text);
+        await (await this.getLocator()).clearValue();
+        await (await this.getLocator()).setValue(text);
+    }
+
+    async hoverOn() {
+        return this.getLocator().moveTo();
     }
 
     async scrollIntoView() {
-        await this.elementLocator.scrollIntoView();
+        await this.getLocator().scrollIntoView();
     }
 
     async getText() {
         await this.waitTillVisible();
-        return await this.elementLocator.getText();
+        this.getLocator().getText();
     }
 
     async selectAll() {
@@ -145,4 +116,4 @@ class BaseElement {
     }
 }
 
-module.exports = { BaseElement };
+export {BaseElement};

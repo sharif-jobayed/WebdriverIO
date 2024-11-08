@@ -9,6 +9,11 @@ Feature: Home page
     And The 'Home' page is loaded
 
   @Test-0001
-  Scenario: A visitor exploring the Home page
+  Scenario: Clicks on the site logo
     When I click on the 'Site' logo on the 'Home' page
     Then I remain on the 'Home' page
+
+  @Test-0002
+  Scenario: Put mouse pointer on the top-level menu item
+    When I hover on 'Training' link on the 'Home' page
+    Then The dropdown menu opens up

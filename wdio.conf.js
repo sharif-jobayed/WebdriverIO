@@ -1,6 +1,6 @@
-const {glob} = require("glob");
-const AppData = require('./src/data/appData.json');
-exports.config = {
+import {glob} from 'glob';
+
+const config = {
     //
     // ====================
     // Runner Configuration
@@ -53,9 +53,11 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-        {browserName: AppData.Browsers[0]},
-        // {browserName: 'firefox'}
+        {browserName: 'chrome'},
+        // {browserName: 'firefox'},
+        // {browserName: 'MicrosoftEdge'}
     ],
+
     //
     // ===================
     // Test Configurations
@@ -68,7 +70,7 @@ exports.config = {
     // Set specific log levels per logger
     // loggers:
     // - webdriver, webdriverio
-    // - @wdio/browserstack-service, @wdio/devtools-service, @wdio/sauce-service
+    // - @wdio/browserstack-service, @wdio/lighthouse-service, @wdio/sauce-service
     // - @wdio/mocha-framework, @wdio/jasmine-framework
     // - @wdio/local-runner
     // - @wdio/sumologic-reporter
@@ -133,7 +135,7 @@ exports.config = {
         // <string[]> (file/dir) require files before executing features
         require: [
             './src/framework/BaseSteps.js',
-            ...glob.sync('./src/step-definitions/**/**/**/**/*.js'),
+            ...glob.sync('./src/step-definitions/**/**/**/**/*.js')
         ],
         // <boolean> show full backtrace for errors
         backtrace: false,
@@ -339,3 +341,5 @@ exports.config = {
     // afterAssertion: function(params) {
     // }
 }
+
+export {config};
