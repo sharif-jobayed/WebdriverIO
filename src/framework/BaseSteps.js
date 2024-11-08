@@ -1,7 +1,3 @@
-// const { Given, When, Then } = require('@wdio/cucumber-framework');
-// const { assert } = require('chai');
-// const { PageBuilder } = require('./PageBuilder');
-
 import {Given, When, Then} from '@wdio/cucumber-framework';
 import {assert} from 'chai';
 import {PageBuilder} from './PageBuilder.js'

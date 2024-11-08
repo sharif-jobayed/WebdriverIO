@@ -1,4 +1,3 @@
-// const {BasePage} = require("../framework/BasePage");
 import {BasePage} from '../framework/BasePage.js'
 
 class HomePage extends BasePage {

@@ -1,5 +1,3 @@
-// const AppData = require('../data/appData.json');
-// const {HomePage} = require("../pages/HomePage");
 import AppData from '../data/appData.json';
 import {HomePage} from '../pages/HomePage.js';
 
