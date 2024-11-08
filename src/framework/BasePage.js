@@ -97,4 +97,4 @@ class BasePage {
     }
 }
 
-export {BasePage};
+export {BasePage}

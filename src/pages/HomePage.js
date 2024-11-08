@@ -6,4 +6,4 @@ class HomePage extends BasePage {
     }
 }
 
-export {HomePage};
+export {HomePage}

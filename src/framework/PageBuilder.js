@@ -22,4 +22,4 @@ class PageBuilder {
     }
 }
 
-export {PageBuilder};
+export {PageBuilder}

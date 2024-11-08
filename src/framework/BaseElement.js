@@ -116,4 +116,4 @@ class BaseElement {
     }
 }
 
-export {BaseElement};
+export {BaseElement}
