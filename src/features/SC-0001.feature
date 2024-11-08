@@ -11,7 +11,7 @@ Feature: Home page
   @Test-0001
   Scenario: Clicks on the site logo
     When I click on the 'Site' logo on the 'Home' page
-    Then I remain on the 'Home' page
+    Then I remain on the Home page
 
   @Test-0002
   Scenario: Put mouse pointer on the top-level menu item

@@ -32,26 +32,21 @@ Then(
 When(
     /^I click on the '(.*)' logo on the '(.*)' page$/,
     async (logo, pageName) => {
-        // const page = await pageBuilder.getPage(pageName);
-        // const logoElement = page[logo]; // Assuming logo is a defined element in the page object
-        // await logoElement.doClick();
+        const page = await pageBuilder.getPage(pageName);
+        page.clickSiteLogo();
     }
 );
 
 When(
     /^I hover on '(.*)' link on the '(.*)' page$/,
     async (link, pageName) => {
-        // const page = await pageBuilder.getPage(pageName);
-        // const linkElement = page[link]; // Assuming link is a defined element in the page object
-        // await linkElement.scrollIntoView();
-        // await linkElement.moveTo(); // Hover over the element
+
     }
 );
 
 When(
     /^The dropdown menu opens up$/,
     async () => {
-        // const dropdownMenu = await pageBuilder.getDropdownMenu(); // Assuming the dropdown is accessible via PageBuilder
-        // assert.isTrue(await dropdownMenu.isVisible(), `Dropdown menu did not open`);
+
     }
 );

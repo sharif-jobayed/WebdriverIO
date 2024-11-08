@@ -1,4 +1,4 @@
 {
   "Browsers": ["chrome", "firefox", "edge"],
-  "BaseURL": "browser.options.baseUrl"
+  "BaseURL": "https://magento.softwaretestingboard.com/"
 }
