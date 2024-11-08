@@ -1,4 +1,4 @@
-import {Given, When, Then} from '@wdio/cucumber-framework';
+import {Given, Then, When} from '@wdio/cucumber-framework';
 import {assert} from 'chai';
 import {PageBuilder} from './PageBuilder.js'
 
