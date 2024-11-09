@@ -1,4 +1,5 @@
 import {glob} from 'glob';
+import appData from './src/data/appData.json' assert {type: 'json'};
 
 const config = {
     //
@@ -53,9 +54,10 @@ const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-        {browserName: 'chrome'},
+        // {browserName: 'chrome'},
         // {browserName: 'firefox'},
         // {browserName: 'MicrosoftEdge'}
+        {browserName: appData.Browsers[0]},
     ],
 
     //
@@ -89,7 +91,7 @@ const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://magento.softwaretestingboard.com/',
+    baseUrl: appData.BaseURL,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
