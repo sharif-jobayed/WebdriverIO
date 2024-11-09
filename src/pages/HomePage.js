@@ -8,10 +8,22 @@ class HomePage extends BasePage {
             `//a[@aria-label='store logo']//img`,
             `Site logo`
         );
+        this.trainingMenuItem = new BaseElement(
+            `//span[normalize-space()='Training']`,
+            `Training Menu link`,
+        );
+        this.trainingDropdownMenu = new BaseElement(
+            `//ul[@aria-expanded='true']`,
+            `Training Dropdown menu`
+        );
     }
 
     async clickSiteLogo() {
         return this.siteLogo.doClick();
+    }
+
+    async hoverTrainingMenu() {
+        return this.trainingMenuItem.hoverOn();
     }
 }
 

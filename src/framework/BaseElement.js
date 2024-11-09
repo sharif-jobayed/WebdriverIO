@@ -22,23 +22,23 @@ class BaseElement {
     }
 
     async doesExist() {
-        await (await this.getLocator()).isExisting();
+        return (await this.getLocator()).isExisting();
     }
 
     async isVisible() {
-        await (await this.getLocator()).isDisplayed();
+        return (await this.getLocator()).isDisplayed();
     }
 
     async isClickable() {
-        this.getLocator().isClickable();
+        return (await this.getLocator()).isClickable();
     }
 
     async isEnabled() {
-        this.getLocator().isEnabled();
+        return (await this.getLocator()).isEnabled();
     }
 
     async isSelected() {
-        await this.getLocator().isSelected();
+        return (await this.getLocator()).isSelected();
     }
 
     async wait(timeout = 5000) {
@@ -87,7 +87,7 @@ class BaseElement {
     }
 
     async hoverOn() {
-        return this.getLocator().moveTo();
+        return (await this.getLocator()).moveTo();
     }
 
     async scrollIntoView() {

@@ -38,15 +38,18 @@ When(
 );
 
 When(
-    /^I hover on '(.*)' link on the '(.*)' page$/,
-    async (link, pageName) => {
-
+    /^I hover on Training menu on the '(.*)' page$/,
+    async (pageName) => {
+        const page = await pageBuilder.getPage(pageName);
+        page.hoverTrainingMenu();
     }
 );
 
-When(
-    /^The dropdown menu opens up$/,
-    async () => {
-
+Then(
+    /^The Training dropdown menu opens up on the '(.*)' page$/,
+    async (pageName) => {
+        const page = await pageBuilder.getPage(pageName);
+        await page.trainingDropdownMenu.waitTillVisible(5000);
+        assert.isTrue(await page.trainingDropdownMenu.isVisible(), `The training dropdown menu is not visible`);
     }
 );

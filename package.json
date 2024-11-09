@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.js",
-    "tag": "npx wdio run ./wdio.conf.js --cucumberOpts.tags='@Test-0001'"
+    "tag": "npx wdio run ./wdio.conf.js --cucumberOpts.tags='@Test-0002'"
   },
   "keywords": [],
   "author": "Sharif Jobayed",

@@ -15,5 +15,5 @@ Feature: Home page
 
   @Test-0002
   Scenario: Put mouse pointer on the top-level menu item
-    When I hover on 'Training' link on the 'Home' page
-    Then The dropdown menu opens up
+    When I hover on Training menu on the 'Home' page
+    Then The Training dropdown menu opens up on the 'Home' page
