@@ -95,6 +95,10 @@ class BasePage {
             await browser.switchToWindow(handles[0]);
         }
     }
+
+    async takeSS() {
+        return browser.saveScreenshot(`./src/resources/screenShots/ss.png`);
+    }
 }
 
 export {BasePage}
