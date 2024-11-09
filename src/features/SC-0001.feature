@@ -31,5 +31,5 @@ Feature: Home page
     And The 'Home' page is loaded
 
     Examples:
-      | user           | email                 | password       |
-      | Test User One  | t.user0001@yopmail.com| tPassword@00   |
+      | user          | email                  | password     |
+      | Test User One | t.user0001@yopmail.com | tPassword@00 |
