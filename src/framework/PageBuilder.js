@@ -1,4 +1,3 @@
-import AppData from '../data/appData.json';
 import {HomePage} from '../pages/HomePage.js';
 
 class PageBuilder {
