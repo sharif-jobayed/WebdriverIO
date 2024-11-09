@@ -29,7 +29,8 @@ class BasePage {
 
     async isPageOpen() {
         const currentURL = await this.getCurrentURL();
-        return currentURL === this.pageURL || currentURL.startsWith(this.pageURL);
+        const fullPageURL = `${browser.options.baseUrl}${this.pageURL}`;
+        return currentURL === fullPageURL || currentURL.startsWith(fullPageURL);
     }
 
     async isPageLoaded(timeout = DEFAULT_TIMEOUT) {

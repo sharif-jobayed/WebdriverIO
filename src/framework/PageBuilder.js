@@ -1,14 +1,21 @@
 import {HomePage} from "../pages/HomePage.js";
 import {CustomerLoginPage} from "../pages/CustomerLoginPage.js";
+import {UserAccountPage} from '../pages/UserAccountPage.js';
 
 class PageBuilder {
     constructor() {
         this.pages = {
-            'home': new HomePage('', 'Home page'),
+            'home': new HomePage(``, `Home page`),
+
             'customer login': new CustomerLoginPage(
-                'https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/',
-                'Customer Login page'
-            )
+                `customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/`,
+                `Customer Login page`
+            ),
+
+            'user account': new UserAccountPage(
+                `customer/account/index/`,
+                `User Account page`
+            ),
             // Add other pages here as the suite grows
         };
     }

@@ -19,7 +19,17 @@ Feature: Home page
     Then The Training dropdown menu opens up on the 'Home' page
 
   @Test-0003
-  Scenario: Login to the user account
+  Scenario Outline: Login to the user account
     When I click on the Sign In link on the 'Home' page
     Then The 'Customer Login' page is open
     And The 'Customer Login' page is loaded
+
+    When I type '<email>' in the email field on the 'Customer Login' page
+    And I type '<password>' in the password field on the 'Customer Login' page
+    And I click the Sign In button on the 'Customer Login' page
+    Then The 'Home' page is open
+    And The 'Home' page is loaded
+
+    Examples:
+      | user           | email                 | password       |
+      | Test User One  | t.user0001@yopmail.com| tPassword@00   |
