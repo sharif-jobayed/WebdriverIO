@@ -58,7 +58,7 @@ class BaseElement {
     }
 
     async waitTillEnabled(timeout = 5000) {
-        this.getLocator().waitForEnabled({timeout});
+        await this.getLocator().waitForEnabled({timeout});
     }
 
     async waitTillFrameIsOpen(timeout = 5000) {
