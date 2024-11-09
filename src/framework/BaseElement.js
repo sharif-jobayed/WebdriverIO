@@ -17,10 +17,6 @@ class BaseElement {
         return this.elementName;
     }
 
-    async getElement() {
-        return this;
-    }
-
     async doesExist() {
         return (await this.getLocator()).isExisting();
     }
@@ -41,10 +37,6 @@ class BaseElement {
         return (await this.getLocator()).isSelected();
     }
 
-    async wait(timeout = 5000) {
-        return await browser.pause(timeout);
-    }
-
     async waitTillVisible(timeout = 5000) {
         await (await this.getLocator()).waitForDisplayed({timeout});
     }
@@ -58,32 +50,27 @@ class BaseElement {
     }
 
     async waitTillEnabled(timeout = 5000) {
-        await this.getLocator().waitForEnabled({timeout});
+        await (await this.getLocator()).waitForEnabled({timeout});
     }
 
     async waitTillFrameIsOpen(timeout = 5000) {
-        return await browser.waitUntil(
-            async () => await this.doesExist(),
-            {timeout, timeoutMsg: 'Frame did not open within the specified timeout'}
-        );
+        return await this.waitTill(() => this.doesExist(), timeout, 'Frame did not open within the specified timeout');
     }
 
     async waitTillFrameIsClose(timeout = 5000) {
-        return await browser.waitUntil(
-            async () => !(await this.doesExist()),
-            {timeout, timeoutMsg: 'Frame did not close within the specified timeout'}
-        );
+        return await this.waitTill(() => !this.doesExist(), timeout, 'Frame did not close within the specified timeout');
     }
 
     async doClick() {
         await this.waitTillVisible();
-        await this.getLocator().click();
+        return (await this.getLocator()).click();
     }
 
     async clearAndType(text) {
         await this.waitTillVisible();
-        await (await this.getLocator()).clearValue();
-        await (await this.getLocator()).setValue(text);
+        const locator = await this.getLocator();
+        await locator.clearValue();
+        await locator.setValue(text);
     }
 
     async hoverOn() {
@@ -91,29 +78,27 @@ class BaseElement {
     }
 
     async scrollIntoView() {
-        await this.getLocator().scrollIntoView();
+        await (await this.getLocator()).scrollIntoView();
     }
 
     async getText() {
         await this.waitTillVisible();
-        this.getLocator().getText();
+        return (await this.getLocator()).getText();
     }
 
     async selectAll() {
         const elements = await this.getLocators();
-        for (const element of elements) {
-            await element.click();
-        }
+        await Promise.all(await elements.map(element => element.click()));
     }
 
     async listText() {
         const elements = await this.getLocators();
-        const texts = [];
-        for (const element of elements) {
-            texts.push(await element.getText());
-        }
-        return texts;
+        return Promise.all(await elements.map(element => element.getText()));
+    }
+
+    async waitTill(conditionFn, timeout = 5000, timeoutMsg = 'Condition not met') {
+        return await browser.waitUntil(conditionFn, { timeout, timeoutMsg });
     }
 }
 
-export {BaseElement}
+export { BaseElement }

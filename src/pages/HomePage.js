@@ -1,20 +1,36 @@
-import {BasePage} from '../framework/BasePage.js'
+import {BasePage} from "../framework/BasePage.js";
 import {BaseElement} from "../framework/BaseElement.js";
 
 class HomePage extends BasePage {
     constructor(pageURL, pageName) {
         super(pageURL, pageName);
-        this.siteLogo = new BaseElement(
+    }
+
+    get siteLogo() {
+        return new BaseElement(
             `//a[@aria-label='store logo']//img`,
             `Site logo`
         );
-        this.trainingMenuItem = new BaseElement(
+    }
+
+    get trainingMenuItem() {
+        return new BaseElement(
             `//span[normalize-space()='Training']`,
-            `Training Menu link`,
+            `Training Menu link`
         );
-        this.trainingDropdownMenu = new BaseElement(
+    }
+
+    get trainingDropdownMenu() {
+        return new BaseElement(
             `//ul[@aria-expanded='true']`,
             `Training Dropdown menu`
+        );
+    }
+
+    get signInLink() {
+        return new BaseElement(
+            `//div[@class='panel header']//a[contains(text(),'Sign In')]`,
+            `Sign In link`
         );
     }
 
@@ -25,6 +41,10 @@ class HomePage extends BasePage {
     async hoverTrainingMenu() {
         return this.trainingMenuItem.hoverOn();
     }
+
+    async clickSignInLink() {
+        return this.signInLink.doClick();
+    }
 }
 
-export {HomePage}
+export {HomePage};

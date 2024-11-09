@@ -1,5 +1,5 @@
-import {Then} from '@wdio/cucumber-framework';
-import {assert} from "chai";
+import {Then} from "@wdio/cucumber-framework";
+import {assert} from 'chai';
 import {PageBuilder} from '../framework/PageBuilder.js';
 
 const pageBuilder = new PageBuilder();

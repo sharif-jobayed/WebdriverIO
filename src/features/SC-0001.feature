@@ -10,10 +10,16 @@ Feature: Home page
 
   @Test-0001
   Scenario: Clicks on the site logo
-    When I click on the 'Site' logo on the 'Home' page
+    When I click on the Site logo on the 'Home' page
     Then I remain on the Home page
 
   @Test-0002
   Scenario: Put mouse pointer on the top-level menu item
     When I hover on Training menu on the 'Home' page
     Then The Training dropdown menu opens up on the 'Home' page
+
+  @Test-0003
+  Scenario: Login to the user account
+    When I click on the Sign In link on the 'Home' page
+    Then The 'Customer Login' page is open
+    And The 'Customer Login' page is loaded
