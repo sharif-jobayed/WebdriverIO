@@ -1,0 +1,12 @@
+// Cucumber (Gherkin) Full Support by Alexander Krechik "https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete"
+{
+    "cucumberautocomplete.steps": [
+        "step definitions directory/*.js",
+        "step definitions directory/*.js"
+    ],
+    "cucumberautocomplete.strictGherkinCompletion": true
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+// Next here...
