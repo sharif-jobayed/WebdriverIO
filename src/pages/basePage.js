@@ -7,6 +7,7 @@ class BasePage {
 		this.pageURL = pageURL;
 		this.pageName = pageName;
 	}
+	
 	linkByText(text) {
 		return new BaseElement(
 			`//a[text()='${text}']`,
