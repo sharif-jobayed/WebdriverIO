@@ -132,5 +132,4 @@ dist
 # Allure Report
 allure-results
 
-# VS Code
-
+package-lock.json
