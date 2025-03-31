@@ -1,0 +1,10 @@
+{
+  "Test User One": {
+    "Email": "t.user0001@yopmail.com",
+    "Password": "tPassword@00"
+  },
+  "Test User Two": {
+    "Email": "t.user0002@yopmail.com",
+    "Password": "tPassword@00"
+  }
+}
