@@ -1,0 +1,8 @@
+{
+	"BaseURL": "https://www.saucedemo.com/",
+	"Timeouts": {
+		"Min": 5000,
+		"Med": 30000,
+		"Max": 60000
+	}
+}
