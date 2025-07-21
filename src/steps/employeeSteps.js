@@ -5,9 +5,7 @@ import { assert } from 'chai';
 import {readFileSync} from 'fs';
 const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
 
-// Example usage
 const randomName = faker.name.fullName();
-console.log(randomName);
 
 const pageBuilder = new PageBuilder();
 let page;

@@ -34,13 +34,13 @@ Feature: Employee Management with OrangeHRM
     And I enter the username and password on "Add Employee" page
     And I submit the employee creation form on "Add Employee" page
     Then I am on the "Personal Details" page
-    # And the "Personal Details" page is open
-    # And the "Personal Details" page is loaded
+# And the "Personal Details" page is open
+# And the "Personal Details" page is loaded
 
-    # When I verify the employee's full name on "Personal Details" page
-    # Then I save the employee’s ID, username, and password to “generatedEmployee.json”
-    # And I should see a success message confirming creation
-    # And the profile header should display the full name correctly
+# When I verify the employee's full name on "Personal Details" page
+# Then I save the employee’s ID, username, and password to “generatedEmployee.json”
+# And I should see a success message confirming creation
+# And the profile header should display the full name correctly
 
 # @employeeManagement
 # Scenario: Update Employee Nationality
