@@ -73,7 +73,6 @@ Given(
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
 		await page.isPageOpen();
-		await page.isPageLoaded();
 		assert.isTrue(await page.isPageOpen(), `The ${pageName} page is not open`);
 	}
 );

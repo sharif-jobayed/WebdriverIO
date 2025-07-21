@@ -33,7 +33,7 @@ Feature: Employee Management with OrangeHRM
     And I enable the Create Login Details toggle on "Add Employee" page
     And I enter the username and password on "Add Employee" page
     And I submit the employee creation form on "Add Employee" page
-    # Then I am on the "Personal Details" page
+    Then I am on the "Personal Details" page
     # And the "Personal Details" page is open
     # And the "Personal Details" page is loaded
 

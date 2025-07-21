@@ -50,6 +50,24 @@ class BasePage {
 		}
 	}
 
+	async isPageOpenByText(text, timeout = 10000) {
+		const textInUrl = toString(text).toLowerCase(Locale.ROOT);
+
+		try {
+			await browser.waitUntil(
+				async () => (await this.getPagePath()).includes(textInUrl),
+				{
+					timeout: timeout,
+					timeoutMsg: `Page did not open. Expected title to include "${this.getPageName()}" within ${timeout}ms.`,
+				}
+			);
+			return true;
+		} catch (error) {
+			console.error(`Error waiting for page to open by text: ${error.message}`);
+			return false;
+		}
+	}
+
 	async isPageLoaded(timeout = 10000) {
 		try {
 			await browser.waitUntil(

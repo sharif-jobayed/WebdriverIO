@@ -78,6 +78,14 @@ class BaseElement {
 
 	}
 
+	async scrollTo(timeout = 5000) {
+		if (await this.isExisting(timeout)) {
+			await this.getLocator().scrollIntoView();
+		} else {
+			console.warn(`${this.elementName} not found to scroll into view`);
+		}
+	}
+
 }
 
 export { BaseElement }

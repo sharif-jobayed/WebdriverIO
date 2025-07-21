@@ -1,6 +1,7 @@
 import { BasePage } from '../framework/basePage.js';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 const userData = JSON.parse(readFileSync(new URL('../data/userData.json', import.meta.url)));
+
 import { BaseElement } from '../framework/baseElement.js';
 import { generateRandomUserData, generateStrongPassword, randomEmpId } from '../framework/utils/randomData.js';
 
@@ -34,7 +35,7 @@ class AddEmployeePage extends BasePage {
 			`Toggle Login Details Checkbox`
 		);
 		this.usernameField = new BaseElement(
-			`//input[@class='oxd-input oxd-input--focus']`,
+			`//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input`,
 			`Username Input Field`
 		);
 		this.passwordField = new BaseElement(
@@ -46,6 +47,8 @@ class AddEmployeePage extends BasePage {
 			`Confirm Password Input Field`
 		);
 	}
+
+	let 
 
 	async randomEmployeeData() {
 		const randomUserData = await generateRandomUserData();
@@ -67,16 +70,30 @@ class AddEmployeePage extends BasePage {
 	}
 
 	async enableCreateLoginDetailsToggle() {
-		return this.toggleLoginDetailsCheckbox.doClick();
+		await this.toggleLoginDetailsCheckbox.doClick();
+		await this.usernameField.scrollTo();
 	}
 
 	async enterLoginDetails() {
-		await this.usernameField.clearAndType(await this.randomEmployeeData().username);
-		await this.passwordField.clearAndType(await this.randomEmployeeData().password);
-		await this.confirmPasswordField.clearAndType(await this.randomEmployeeData().password);
+		const userData = await this.randomEmployeeData();
+		await this.usernameField.clearAndType(userData.username);
+		await this.passwordField.clearAndType(userData.password);
+		await this.confirmPasswordField.clearAndType(userData.password);
+	}
+
+	async saveEmployeeCredentials() {
+		const userData = await this.randomEmployeeData();
+		const credentials = {
+			employeeId: userData.employeeId,
+			username: userData.username,
+			password: userData.password
+		};
+
+		writeFileSync(new URL('../data/employeeCredentials.json', import.meta.url), JSON.stringify(credentials, null, 2));
 	}
 
 	async clickSubmit() {
+		await this.saveEmployeeCredentials();
 		return this.saveButton.doClick();
 	}
 
