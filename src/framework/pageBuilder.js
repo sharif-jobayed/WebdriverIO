@@ -12,13 +12,16 @@ class PageBuilder {
             return new DashboardPage();
         } else if (pn.includes(`employee list`)) {
             const { EmployeeList } = await import(`../pages/EmployeeListPage.js`);
-            return new PIMPage();
+            return new EmployeeList();
         } else if (pn.includes(`directory`)) {
             const { DirectoryPage } = await import(`../pages/directoryPage.js`);
             return new DirectoryPage();
         } else if (pn.includes(`add employee`)) {
             const { AddEmployeePage } = await import(`../pages/addEmployeePage.js`);
             return new AddEmployeePage();
+        } else if (pn.includes(`personal details`)) {
+            const { PersonalDetailsPage } = await import(`../pages/personalDetailsPage.js`);
+            return new PersonalDetailsPage();
         }
         else {
             throw new Error(`Invalid page name: ${pageName}`);

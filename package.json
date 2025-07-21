@@ -15,6 +15,9 @@
   },
   "scripts": {
     "test": "npx wdio",
+    "testLogin": "npx wdio --cucumberOpts.tagExpression='@login'",
+    "testEmployees": "npx wdio --cucumberOpts.tagExpression='@employeeManagement'",
+    "createEmployee": "npx wdio --cucumberOpts.tagExpression='@createEmployee'",
     "report:generate": "allure generate allure-results --clean",
     "report:open": "allure open"
   }

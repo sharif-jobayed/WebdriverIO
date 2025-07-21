@@ -61,9 +61,10 @@ When(
 );
 
 When(
-	/^I click on the Add Employee button on "(.*)" page$/,
-	async () => {
-		
+	/^I click the Add button on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.clickAddEmployeeButton();
 	}
 );
 
@@ -78,9 +79,33 @@ Given(
 );
 
 When(
-	/^I add a new employee with generated data on "(.*)" page$/,
+	/^I enter the employee's first name and last name and ID on "(.*)" page$/,
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
+		await page.enterEmployeeInfo();
+	}
+);
 
+When(
+	/^I enable the Create Login Details toggle on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.enableCreateLoginDetailsToggle();
+	}
+);
+
+When(
+	/^I enter the username and password on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.enterLoginDetails();
+	}
+);
+
+When(
+	/^I submit the employee creation form on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		return await page.clickSubmit();
 	}
 );

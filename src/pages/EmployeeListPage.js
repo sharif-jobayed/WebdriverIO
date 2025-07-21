@@ -14,6 +14,9 @@ class EmployeeList extends BasePage {
 		);
 	}
 	
+	async clickAddEmployeeButton() {
+		await this.addBtn.doClick();
+	}
 }
 
 export {EmployeeList}

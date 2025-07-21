@@ -18,4 +18,18 @@ const generateRandomUserData = async () => {
 	}
 }
 
-export {generateRandomUserData}
+const generateStrongPassword = async (length = 12) => {
+	return faker.internet.password({
+		length,
+		memorable: false,
+		pattern: /[A-Za-z0-9!@#$%^&*()]/,
+		prefix: '!Aa1'
+	});
+}
+
+const randomEmpId = () => {
+	const empId = faker.string.numeric({ length: 4 });
+	return parseInt(empId, 10);
+}
+
+export {generateRandomUserData, generateStrongPassword, randomEmpId};
