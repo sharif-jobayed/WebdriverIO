@@ -4,10 +4,17 @@ import { faker } from '@faker-js/faker';
 const generateRandomUserData = () => {
 	return {
 		firstName: faker.person.firstName(),
+		middleName: faker.person.middleName(),
+		employeeId: faker.string.numeric({ length: 4 }),
 		lastName: faker.person.lastName(),
 		email: faker.internet.email(),
 		username: faker.internet.username(),
-		password: faker.internet.password(),
+		password: faker.internet.password({
+			length: 10,
+			memorable: false,
+			pattern: /[A-Za-z0-9!@#$%^&*()]/,
+			prefix: '!Aa1'
+		}),
 		phoneNumber: faker.phone.number(),
 		address: {
 			street: faker.location.streetAddress(),
@@ -19,18 +26,4 @@ const generateRandomUserData = () => {
 	};
 };
 
-const generateStrongPassword = (length = 12) => {
-	return faker.internet.password({
-		length,
-		memorable: false,
-		pattern: /[A-Za-z0-9!@#$%^&*()]/,
-		prefix: '!Aa1'
-	});
-};
-
-const randomEmpId = () => {
-	const empId = faker.string.numeric({ length: 4 });
-	return parseInt(empId, 10);
-}
-
-export { generateRandomUserData, generateStrongPassword, randomEmpId };
+export { generateRandomUserData};

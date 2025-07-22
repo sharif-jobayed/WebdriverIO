@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'fs';
 const userData = JSON.parse(readFileSync(new URL('../data/userData.json', import.meta.url)));
 
 import { BaseElement } from '../framework/baseElement.js';
-import { generateRandomUserData, generateStrongPassword, randomEmpId } from '../framework/utils/randomData.js';
+import { generateRandomUserData} from '../framework/utils/randomData.js';
 
 let cachedEmployeeData = null;
 
@@ -27,13 +27,13 @@ class AddEmployeePage extends BasePage {
 	randomEmployeeData() {
 		if (!cachedEmployeeData) {
 			const randomUserData = generateRandomUserData();
-			const strongPassword = generateStrongPassword();
+			const strongPassword = randomUserData.password;
 			cachedEmployeeData = {
 				firstName: randomUserData.firstName,
 				lastName: randomUserData.lastName,
 				username: randomUserData.username,
 				password: strongPassword,
-				employeeId: randomEmpId().toString(),
+				employeeId: randomUserData.employeeId,
 			};
 		}
 		return cachedEmployeeData;

@@ -12,12 +12,10 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async getFirstName() {
-		console.log(`The first name is: ${this.firstNameField.getValue()}`);
 		return await this.firstNameField.getValue();
 	}
 
 	async getLastName() {
-		console.log(`The last name is: ${this.lastNameField.getValue()}`);
 		return await this.lastNameField.getValue();
 	}
 
