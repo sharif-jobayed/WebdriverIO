@@ -118,8 +118,8 @@ Then(
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
 		const creds = await getEmployeeCreds();
-		const actualFirstName = await page.getFirstName();
-		const actualLastName = await page.getLastName();
+		const actualFirstName = await page.getFirstNameValue();
+		const actualLastName = await page.getLastNameValue();
 		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
 		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
 

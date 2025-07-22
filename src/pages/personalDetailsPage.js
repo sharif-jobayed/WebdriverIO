@@ -9,17 +9,22 @@ class PersonalDetailsPage extends BasePage {
 
 		this.firstNameField = new BaseElement(`//input[@placeholder='First Name']`);
 		this.lastNameField = new BaseElement(`//input[@placeholder='Last Name']`);
+		this.employeeIdField = new BaseElement(`//label[text()='Employee Id']/ancestor::div[contains(@class, 'oxd-input-group')]//input`);
 		this.employeeListBtn = new BaseElement(`//a[normalize-space()='Employee List']`);
 		this.savePersonalDetailsBtn = new BaseElement(`//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//button[@type='submit'][normalize-space()='Save']`);
 		this.nationalityDropdownArrow = new BaseElement(`//div[contains(@class, 'oxd-select-text--active')]//i[contains(@class, 'oxd-select-text--arrow')]`);
 	}
 
-	async getFirstName() {
+	async getFirstNameValue() {
 		return await this.firstNameField.getValue();
 	}
 
-	async getLastName() {
+	async getLastNameValue() {
 		return await this.lastNameField.getValue();
+	}
+
+	async getEmployeeIdValue() {
+		return await this.employeeIdField.getValue();
 	}
 
 	async setPersonalDetails() {
