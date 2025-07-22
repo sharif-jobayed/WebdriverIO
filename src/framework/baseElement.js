@@ -1,10 +1,9 @@
 
 class BaseElement {
 
-	constructor(locator, elementName) {
+	constructor(locator) {
 		this.locator = $(locator);
 		this.locators = $$(locator);
-		this.elementName = elementName;
 	}
 
 	getLocator() {
@@ -13,10 +12,6 @@ class BaseElement {
 
 	getLocators() {
 		return this.locators;
-	}
-
-	getElementName() {
-		return this.elementName;
 	}
 
 	async isVisible(timeout = 5000) {
@@ -58,6 +53,13 @@ class BaseElement {
 	async getText(timeout = 5000) {
 		if (await this.isDisplayed(timeout)) {
 			return await this.getLocator().getText();
+		}
+		return ``;
+	}
+
+	async getValue(timeout = 5000) {
+		if (await this.isExist(timeout)) {
+			return await this.getLocator().getValue();
 		}
 		return ``;
 	}

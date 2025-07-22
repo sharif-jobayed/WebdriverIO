@@ -7,18 +7,9 @@ class LoginPage extends BasePage {
 	constructor() {
 		super(``);
 
-		this.usernameField = new BaseElement(
-			`//input[@placeholder='Username']`,
-			`Username field`
-		);
-		this.passwordField = new BaseElement(
-			`//input[@placeholder='Password']`,
-			`Password field`
-		);
-		this.loginButton = new BaseElement(
-			`//button[@type='submit']`,
-			`Login button`
-		);
+		this.usernameField = new BaseElement(`//input[@placeholder='Username']`);
+		this.passwordField = new BaseElement(`//input[@placeholder='Password']`);
+		this.loginButton = new BaseElement(`//button[@type='submit']`);
 	}
 
 	async validAdminLogin () {

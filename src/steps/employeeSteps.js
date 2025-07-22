@@ -1,14 +1,20 @@
-import {Given, When, Then} from '@wdio/cucumber-framework';
-import {PageBuilder} from '../framework/pageBuilder.js';
-import { faker } from '@faker-js/faker';
+import { Given, When, Then } from '@wdio/cucumber-framework';
+import { PageBuilder } from '../framework/pageBuilder.js';
 import { assert } from 'chai';
-import {readFileSync} from 'fs';
-const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
-
-const randomName = faker.name.fullName();
+import { readFileSync } from 'fs';
 
 const pageBuilder = new PageBuilder();
 let page;
+
+const getAppData = async () => {
+	const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
+	return appData;
+}
+
+const getEmployeeCreds = async () => {
+	const credentials = JSON.parse(readFileSync(new URL('../data/employeeCredentials.json', import.meta.url)));
+	return credentials;
+}
 
 Given(
 	/^I open the "(.*)" page$/,
@@ -104,6 +110,18 @@ When(
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
 		return await page.clickSubmit();
+	}
+);
+
+Then(
+	/^I should see the newly created employee's first name and last name on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		const creds = await getEmployeeCreds();
+		const actualFirstName = await page.getFirstName();
+		const actualLastName = await page.getLastName();
+		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
+		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
 	}
 );
 

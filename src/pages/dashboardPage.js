@@ -8,14 +8,8 @@ class DashboardPage extends BasePage {
 	constructor() {
 		super(`/dashboard/index`);
 
-		this.body = new BaseElement(
-			`//div[@id='app']`,
-			`Body Element`
-		);
-		this.pimLink = new BaseElement(
-			`//span[normalize-space()='PIM']`,
-			`PIM Link Element`
-		);
+		this.body = new BaseElement(`//div[@id='app']`);
+		this.pimLink = new BaseElement(`//span[normalize-space()='PIM']`);
 	}
 
 	async isPageVisible() {

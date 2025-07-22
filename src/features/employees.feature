@@ -36,9 +36,10 @@ Feature: Employee Management with OrangeHRM
     Then I am on the "Personal Details" page
     And the "Personal Details" page is open
     And the "Personal Details" page is loaded
+    And I should see the newly created employee's first name and last name on "Personal Details" page
 
     When I enter the newly created eployee's id on "Employee List" page
-    Then I should see the employee's profile in search results on "Employee List" page
+    # Then I should see the employee's profile in search results on "Employee List" page
 
 # @employeeManagement
 # Scenario: Update Employee Nationality

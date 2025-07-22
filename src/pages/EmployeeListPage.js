@@ -8,10 +8,7 @@ class EmployeeList extends BasePage {
 	constructor() {
 		super(`/pim/viewEmployeeList`);
 
-		this.addBtn = new BaseElement(
-			`//button[normalize-space()='Add']`,
-			`Add Button Element`
-		);
+		this.addBtn = new BaseElement(`//button[normalize-space()='Add']`);
 	}
 	
 	async clickAddEmployeeButton() {
