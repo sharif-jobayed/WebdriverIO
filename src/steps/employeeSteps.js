@@ -4,7 +4,6 @@ import { assert } from 'chai';
 import { readFileSync } from 'fs';
 
 const pageBuilder = new PageBuilder();
-let page;
 
 const getAppData = async () => {
 	const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
@@ -18,165 +17,166 @@ const getEmployeeCreds = async () => {
 
 Given(
 	/^I open the "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.open();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.open();
 	}
 );
 
 Then(
 	/^the "(.*)" page is open$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		assert.isTrue(await page.isPageOpen(), `The ${pageName} page is not open`);
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		assert.isTrue(await this.page.isPageOpen(), `The ${pageName} page is not open`);
 	}
 );
 
 Then(
 	/^the "(.*)" page is loaded$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		assert.isTrue(await page.isPageLoaded(), `The ${pageName} page is not loaded`);
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		assert.isTrue(await this.page.isPageLoaded(), `The ${pageName} page is not loaded`);
 	}
 );
 
 When(
 	/^I login with valid admin credentials on the "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.validAdminLogin();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.validAdminLogin();
 	}
 );
 
 Then(
 	/^I should see the "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		assert.isTrue(await page.isPageVisible(), `The ${pageName} page is not visible`);
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		assert.isTrue(await this.page.isPageVisible(), `The ${pageName} page is not visible`);
 	}
 );
 
 When(
 	/^I click on the PIM menu on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.clickPIMLink();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.clickPIMLink();
 	}
 );
 
 When(
 	/^I click the Add button on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.clickAddEmployeeButton();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.clickAddEmployeeButton();
 	}
 );
 
 Given(
 	/^I am on the "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.isPageOpen();
-		assert.isTrue(await page.isPageOpen(), `The ${pageName} page is not open`);
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.isPageOpen();
+		assert.isTrue(await this.page.isPageOpen(), `The ${pageName} page is not open`);
 	}
 );
 
 When(
 	/^I enter the employee's first name and last name and ID on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.enterEmployeeInfo();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.enterEmployeeInfo();
 	}
 );
 
 When(
 	/^I enable the Create Login Details toggle on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.enableCreateLoginDetailsToggle();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.enableCreateLoginDetailsToggle();
 	}
 );
 
 When(
 	/^I enter the username and password on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.enterLoginDetails();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.enterLoginDetails();
 	}
 );
 
 When(
 	/^I submit the employee creation form on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		return await page.clickSubmit();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		return await this.page.clickSubmit();
 	}
 );
 
 Then(
 	/^I should see the newly created employee's first name and last name on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
 		const creds = await getEmployeeCreds();
-		const actualFirstName = await page.getFirstNameValue();
-		const actualLastName = await page.getLastNameValue();
+		const actualFirstName = await this.page.getFirstNameValue();
+		const actualLastName = await this.page.getLastNameValue();
 		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
 		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
 
-		await page.setPersonalDetails()
+		await this.page.setPersonalDetails()
 	}
 );
 
 // When(
 // 	/^I click employee list button on "(.*)" page$/,
-// 	async (pageName) => {
-// 		page = await pageBuilder.getPage(pageName);
-// 		await page.clickEmployeeListButton();
+// 	async function (pageName) {
+// 		this.page = await pageBuilder.getPage(pageName);
+// 		await this.page.clickEmployeeListButton();
 // 	}
 // );
 
 When(
 	/^I search for employee's id in search field on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.enterEmployeeIdAndSearch();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.enterEmployeeIdAndSearch();
 	}
 );
 
 Then(
 	/^I should see the employee's profile in search results on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		const isEmployeeInList = await page.isEmployeeInList();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		const isEmployeeInList = await this.page.isEmployeeInList();
 		assert.isTrue(isEmployeeInList, 'The employee is not found in the list');
 	}
 );
 
 Then(
 	/^I click on the Directory menu on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.clickDirectoryLink();
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.clickDirectoryLink();
 	}
 );
 
 When (
 	/^I enter a name in the search field on "(.*)" page$/,
-	async (pageName) => {
-		// Waiting for the app to be accessible
+	async function (pageName) {
+		this.page = await pageBuilder.getPage(pageName);
+		await this.page.enterEmployeeNameAndSearch();
 	}
 );
 
 Then(
 	/^the names dropdown is opened on "(.*)" page$/,
-	async (pageName) => {
+	async function (pageName) {
 		// Waiting for the app to be accessible
 	}
 );
 
 When(
 	/^I select a name from the names dropdown on "(.*)" page$/,
-	async (pageName) => {
+	async function (pageName) {
 		// Waiting for the app to be accessible
 	}
 );

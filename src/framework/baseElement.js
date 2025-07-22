@@ -66,12 +66,8 @@ class BaseElement {
 	async clearAndType(value, timeout = 5000) {
 		if (await this.isEnabled(timeout)) {
 			try {
-				if (await this.isEnabled(timeout)) {
-					await this.getLocator().clearValue();
-					await this.getLocator().setValue(value);
-				} else {
-					console.warn(`${this.elementName} is not enabled`);
-				}
+				await this.getLocator().clearValue();
+				await this.getLocator().setValue(value);
 			} catch (err) {
 				console.error(`Error clearing and typing value: ${err.message}`);
 			}

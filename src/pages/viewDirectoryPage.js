@@ -1,4 +1,4 @@
-import { BasePage } from "../framework/basePage";
+import { BasePage } from "../framework/basePage.js";
 import { readJSON } from '../framework/utils/randomData.js';
 import { BaseElement } from "../framework/baseElement.js";
 
@@ -12,14 +12,14 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	getEmployeeCreds = async () => {
-		const credentials = await readJSON(new URL('../data/employeeCredentials.json', import.meta.url));
-		return credentials;		
+		return readJSON('../../data/employeeCredentials.json');
 	}
 
 	async enterEmployeeNameAndSearch() {
-		const employeeCreds = await this.getEmployeeCreds();
-		await this.searchNameField.clearAndType(employeeCreds.forEach(e => e.firstName));
-		await this.searchBtn.doClick();
+		const employee = await this.getEmployeeCreds();
+		const fullName = `${employee.firstName} ${employee.lastName}`;
+		await this.searchNameField.clearAndType(employee.firstName);
+		
 	}
 }
 

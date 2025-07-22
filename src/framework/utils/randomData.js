@@ -31,8 +31,9 @@ const writeJSON = (data) => {
 	return writeFileSync(new URL('../../data/employeeCredentials.json', import.meta.url), JSON.stringify(data, null, 2));
 }
 
-const readJSON = () => {
-	return readFileSync(new URL('../../data/employeeCredentials.json', import.meta.url));
+const readJSON = (url) => {
+	const data = readFileSync(new URL(url, import.meta.url), 'utf-8');
+	return JSON.parse(data);
 }
 
 export { generateRandomUserData, writeJSON, readJSON};
