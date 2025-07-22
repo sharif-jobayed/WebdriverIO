@@ -106,3 +106,17 @@ When(
 		return await page.clickSubmit();
 	}
 );
+
+When(
+	/^I enter the newly created eployee's id on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+	}
+);
+
+Then(
+	/^I should see the employee's profile in search results on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+	}
+);
