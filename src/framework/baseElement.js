@@ -24,7 +24,7 @@ class BaseElement {
 		return await this.getLocator().isDisplayed();
 	}
 
-	async isExisting(timeout = 5000) {
+	async isExist(timeout = 5000) {
 		await this.getLocator().waitForExist({ timeout });
 		return await this.getLocator().isExisting();
 	}
@@ -79,7 +79,7 @@ class BaseElement {
 	}
 
 	async scrollTo(timeout = 5000) {
-		if (await this.isExisting(timeout)) {
+		if (await this.isExist(timeout)) {
 			await this.getLocator().scrollIntoView();
 		} else {
 			console.warn(`${this.elementName} not found to scroll into view`);

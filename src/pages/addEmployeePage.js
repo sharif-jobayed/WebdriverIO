@@ -6,10 +6,9 @@ import { BaseElement } from '../framework/baseElement.js';
 import { generateRandomUserData, generateStrongPassword, randomEmpId } from '../framework/utils/randomData.js';
 
 class AddEmployeePage extends BasePage {
-
-	constructor() {
-		super(`/pim/addEmployee`, `Add Employee Page`);
-
+	constructor() {	
+		super(`/pim/addEmployee`);
+	
 		this.firstNameField = new BaseElement(
 			`//input[@placeholder='First Name']`,
 			`First Name Input Field`
@@ -47,8 +46,6 @@ class AddEmployeePage extends BasePage {
 			`Confirm Password Input Field`
 		);
 	}
-
-	let 
 
 	async randomEmployeeData() {
 		const randomUserData = await generateRandomUserData();

@@ -6,7 +6,7 @@ import {BaseElement} from '../framework/baseElement.js';
 class DirectoryPage extends BasePage {
 
 	constructor() {
-		super(`/directory/viewDirectory`, `Directory Page`);
+		super();		
 	}
 	
 }

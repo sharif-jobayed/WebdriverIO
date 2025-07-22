@@ -6,9 +6,12 @@ import {BaseElement} from '../framework/baseElement.js';
 class DashboardPage extends BasePage {
 
 	constructor() {
-		super(`/dashboard/index`, `Dashboard Page`);
+		super(`/dashboard/index`);
 
-		this.body = new BaseElement(`//div[@id='app']`, `Body Element`);
+		this.body = new BaseElement(
+			`//div[@id='app']`,
+			`Body Element`
+		);
 		this.pimLink = new BaseElement(
 			`//span[normalize-space()='PIM']`,
 			`PIM Link Element`

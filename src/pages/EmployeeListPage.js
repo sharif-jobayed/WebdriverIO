@@ -6,8 +6,8 @@ import {BaseElement} from '../framework/baseElement.js';
 class EmployeeList extends BasePage {
 
 	constructor() {
-		super(`/pim/viewEmployeeList`, `Employee List Page`);
-	
+		super(`/pim/viewEmployeeList`);
+
 		this.addBtn = new BaseElement(
 			`//button[normalize-space()='Add']`,
 			`Add Button Element`

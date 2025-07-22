@@ -4,11 +4,15 @@ const userData = JSON.parse(readFileSync(new URL('../data/userData.json', import
 import { BaseElement } from '../framework/baseElement.js';
 
 class PersonalDetailsPage extends BasePage {
-
 	constructor() {
-		super(`/\/pim\/viewPersonalDetails\/empNumber\/\d+/`, `Personal Details Page`);
+		super(/\/pim\/viewPersonalDetails\/empNumber\/\d+/);
 	}
 
+	async fillPersonalDetails(firstName, lastName) {
+		await this.firstNameField.clearAndType(firstName);
+		await this.lastNameField.clearAndType(lastName);
+		await this.saveButton.doClick();
+	}
 }
 
 export { PersonalDetailsPage }

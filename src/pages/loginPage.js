@@ -4,9 +4,8 @@ const userData = JSON.parse(readFileSync(new URL('../data/userData.json', import
 import {BaseElement} from '../framework/baseElement.js';
 
 class LoginPage extends BasePage {
-
 	constructor() {
-		super(`/auth/login`, `Login Page`);
+		super(``);
 
 		this.usernameField = new BaseElement(
 			`//input[@placeholder='Username']`,

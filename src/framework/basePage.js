@@ -1,29 +1,20 @@
 import { readFileSync } from 'fs';
 const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
+import {BaseElement} from './baseElement.js';
 
 class BasePage {
 
-	constructor(pagePath, pageName) {
-		this.pagePath = pagePath;
-		this.pageName = pageName;
-	}
+	constructor(pagePath) {
+		this.pagePath = pagePath || ``;
 
-	getPagePath() {
-		return this.pagePath;
-	}
-
-	getPageName() {
-		return this.pageName;
-	}
-
-	getPageUrl() {
-		const baseUrl = appData.BaseURL;
-		const pagePath = this.getPagePath();
-		return `${baseUrl}${pagePath}`;
+		this.app = new BaseElement(
+			`//div[@id='app']`,
+			`Application Root Element`
+		);
 	}
 
 	async open() {
-		await browser.url(this.getPageUrl());
+		await browser.url(this.pagePath);
 	}
 
 	async getCurrentUrl() {
@@ -37,33 +28,15 @@ class BasePage {
 	async isPageOpen(timeout = 10000) {
 		try {
 			await browser.waitUntil(
-				async () => (await this.getCurrentUrl()) === this.getPageUrl(),
+				async () => this.app.isExist(),
 				{
 					timeout: timeout,
-					timeoutMsg: `Page did not open. Expected URL to be "${this.getPageUrl()}" within ${timeout}ms.`,
+					timeoutMsg: `Page did not open. Expected element to exist within ${timeout}ms.`,
 				}
 			);
 			return true;
 		} catch (error) {
-			console.error(`Error waiting for page to open: ${error.message}`);
-			return false;
-		}
-	}
-
-	async isPageOpenByText(text, timeout = 10000) {
-		const textInUrl = toString(text).toLowerCase(Locale.ROOT);
-
-		try {
-			await browser.waitUntil(
-				async () => (await this.getPagePath()).includes(textInUrl),
-				{
-					timeout: timeout,
-					timeoutMsg: `Page did not open. Expected title to include "${this.getPageName()}" within ${timeout}ms.`,
-				}
-			);
-			return true;
-		} catch (error) {
-			console.error(`Error waiting for page to open by text: ${error.message}`);
+			console.error(`Error waiting for page to open by element: ${error.message}`);
 			return false;
 		}
 	}
