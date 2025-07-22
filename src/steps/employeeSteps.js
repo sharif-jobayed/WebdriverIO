@@ -159,3 +159,20 @@ Then(
 		await page.clickDirectoryLink();
 	}
 );
+
+When (
+	/^I enter a name in the search field on "(.*)" page$/,
+	async (pageName) => {
+		
+	}
+);
+
+Then(
+	/^the names dropdown is opened on "(.*)" page$/,
+	async (pageName) => {}
+);
+
+When(
+	/^I select a name from the names dropdown on "(.*)" page$/,
+	async (pageName) => {}
+);

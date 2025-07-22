@@ -53,14 +53,14 @@ Feature: Employee Management with OrangeHRM
     When I search for employee's id in search field on "Employee List" page
     Then I should see the employee's profile in search results on "Employee List" page
 
-    # When I click edit button for the employee on "Employee List" page
-    # Then I am on the "Personal Details" page
+  # When I click edit button for the employee on "Employee List" page
+  # Then I am on the "Personal Details" page
 
-    # When I click nationality drop down arrow on "Personal Details" page
-    # Then country list is opened on "Personal Details" page
-    # And I select "Algerian" from the country list on "Personal Details" page
-    # And I click save button on "Personal Details" page
-    # Then I am on the "Personal Details" page
+  # When I click nationality drop down arrow on "Personal Details" page
+  # Then country list is opened on "Personal Details" page
+  # And I select "Algerian" from the country list on "Personal Details" page
+  # And I click save button on "Personal Details" page
+  # Then I am on the "Personal Details" page
 
   @searchInDirectoryByEmployeeName
   Scenario: Search in Directory by Employee Name
@@ -74,8 +74,9 @@ Feature: Employee Management with OrangeHRM
     And the "View Directory" page is open
     And the "View Directory" page is loaded
 
-# When I enter a name in the search field on "View Directory" page
-# Then the names dropdown is opened
+    When I enter a name in the search field on "View Directory" page
+    # Then the names dropdown is opened on "View Directory" page
+    # And I select a name from the names dropdown on "View Directory" page
 
 
 # @searchEmployeeById

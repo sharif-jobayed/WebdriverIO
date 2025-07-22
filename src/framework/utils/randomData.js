@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { readFileSync, writeFileSync } from 'fs';
 
 
 const generateRandomUserData = () => {
@@ -26,4 +27,12 @@ const generateRandomUserData = () => {
 	};
 };
 
-export { generateRandomUserData};
+const writeJSON = (data) => {
+	return writeFileSync(new URL('../../data/employeeCredentials.json', import.meta.url), JSON.stringify(data, null, 2));
+}
+
+const readJSON = () => {
+	return readFileSync(new URL('../../data/employeeCredentials.json', import.meta.url));
+}
+
+export { generateRandomUserData, writeJSON, readJSON};
