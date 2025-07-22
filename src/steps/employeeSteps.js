@@ -127,16 +127,16 @@ Then(
 	}
 );
 
-When(
-	/^I click employee list button on "(.*)" page$/,
-	async (pageName) => {
-		page = await pageBuilder.getPage(pageName);
-		await page.clickEmployeeListButton();
-	}
-);
+// When(
+// 	/^I click employee list button on "(.*)" page$/,
+// 	async (pageName) => {
+// 		page = await pageBuilder.getPage(pageName);
+// 		await page.clickEmployeeListButton();
+// 	}
+// );
 
 When(
-	/^I search for newly created eployee's id in search field on "(.*)" page$/,
+	/^I search for employee's id in search field on "(.*)" page$/,
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
 		await page.enterEmployeeIdAndSearch();
@@ -149,5 +149,13 @@ Then(
 		page = await pageBuilder.getPage(pageName);
 		const isEmployeeInList = await page.isEmployeeInList();
 		assert.isTrue(isEmployeeInList, 'The employee is not found in the list');
+	}
+);
+
+Then(
+	/^I click on the Directory menu on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.clickDirectoryLink();
 	}
 );

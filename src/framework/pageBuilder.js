@@ -22,6 +22,9 @@ class PageBuilder {
         } else if (pn.includes(`personal details`)) {
             const { PersonalDetailsPage } = await import(`../pages/personalDetailsPage.js`);
             return new PersonalDetailsPage();
+        } else if (pn.includes(`view directory`)) {
+            const { ViewDirectoryPage } = await import(`../pages/viewDirectoryPage.js`);
+            return new ViewDirectoryPage();
         }
         else {
             throw new Error(`Invalid page name: ${pageName}`);

@@ -38,28 +38,48 @@ Feature: Employee Management with OrangeHRM
     And the "Personal Details" page is loaded
     And I should see the newly created employee's first name and last name on "Personal Details" page
 
-    When I click employee list button on "Personal Details" page
+  @employeeInformationUpdate
+  Scenario: Update Employee Information
+    When I login with valid admin credentials on the "Login" page
+    Then the "Dashboard" page is open
+    And the "Dashboard" page is loaded
+    Then I should see the "Dashboard" page
+
+    When I click on the PIM menu on "Dashboard" page
     Then I am on the "Employee List" page
     And the "Employee List" page is open
     And the "Employee List" page is loaded
 
-    When I search for newly created eployee's id in search field on "Employee List" page
+    When I search for employee's id in search field on "Employee List" page
     Then I should see the employee's profile in search results on "Employee List" page
 
-# @employeeManagement
-# Scenario: Update Employee Nationality
-#   When I search for the newly created employee
-#   When I update the nationality field
-#   Then the nationality should be updated successfully
+    # When I click edit button for the employee on "Employee List" page
+    # Then I am on the "Personal Details" page
 
-# @employeeManagement
+    # When I click nationality drop down arrow on "Personal Details" page
+    # Then country list is opened on "Personal Details" page
+    # And I select "Algerian" from the country list on "Personal Details" page
+    # And I click save button on "Personal Details" page
+    # Then I am on the "Personal Details" page
+
+  @searchInDirectoryByEmployeeName
+  Scenario: Search in Directory by Employee Name
+    When I login with valid admin credentials on the "Login" page
+    Then the "Dashboard" page is open
+    And the "Dashboard" page is loaded
+    Then I should see the "Dashboard" page
+
+    When I click on the Directory menu on "Dashboard" page
+    Then I am on the "View Directory" page
+    And the "View Directory" page is open
+    And the "View Directory" page is loaded
+
+# When I enter a name in the search field on "View Directory" page
+# Then the names dropdown is opened
+
+
+# @searchEmployeeById
 # Scenario: Search Employee by ID
 #   When I am on the PIM page
 #   When I search the employee by saved employee ID
 #   Then the employee should be found in the results
-
-# @employeeManagement
-# Scenario: Search Employee in Directory by Name
-#   When I am on the "Directory" page
-#   When I search the employee by full name
-#   Then the employee should appear in the directory

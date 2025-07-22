@@ -10,6 +10,8 @@ class DashboardPage extends BasePage {
 
 		this.body = new BaseElement(`//div[@id='app']`);
 		this.pimLink = new BaseElement(`//span[normalize-space()='PIM']`);
+		this.directoryLink = new BaseElement(`//span[normalize-space()='Directory']`);
+
 	}
 
 	async isPageVisible() {
@@ -27,6 +29,14 @@ class DashboardPage extends BasePage {
 			await this.pimLink.doClick();
 		} catch (error) {
 			console.error(`Failed to click on PIM link: ${error.message}`);
+		}
+	}
+
+	async clickDirectoryLink() {
+		try {
+			await this.directoryLink.doClick();
+		} catch (error) {
+			console.error(`Failed to click on Directory link: ${error.message}`);
 		}
 	}
 }
