@@ -22,7 +22,7 @@ const generateRandomUserData = () => {
 			state: faker.location.state(),
 			country: faker.location.country(),
 			zipCode: faker.location.zipCode()
-		}
+		},
 	};
 };
 
