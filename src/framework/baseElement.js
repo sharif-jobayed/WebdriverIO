@@ -51,7 +51,7 @@ class BaseElement {
 	}
 
 	async getText(timeout = 5000) {
-		if (await this.isDisplayed(timeout)) {
+		if (await this.isVisible(timeout)) {
 			return await this.getLocator().getText();
 		}
 		return ``;
