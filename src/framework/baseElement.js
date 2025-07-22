@@ -2,16 +2,15 @@
 class BaseElement {
 
 	constructor(locator) {
-		this.locator = $(locator);
-		this.locators = $$(locator);
+		this.locator = locator;
 	}
 
 	getLocator() {
-		return this.locator;
+		return $(this.locator);
 	}
 
 	getLocators() {
-		return this.locators;
+		return $$(this.locator);
 	}
 
 	async isVisible(timeout = 5000) {
