@@ -163,16 +163,20 @@ Then(
 When (
 	/^I enter a name in the search field on "(.*)" page$/,
 	async (pageName) => {
-		
+		// Waiting for the app to be accessible
 	}
 );
 
 Then(
 	/^the names dropdown is opened on "(.*)" page$/,
-	async (pageName) => {}
+	async (pageName) => {
+		// Waiting for the app to be accessible
+	}
 );
 
 When(
 	/^I select a name from the names dropdown on "(.*)" page$/,
-	async (pageName) => {}
+	async (pageName) => {
+		// Waiting for the app to be accessible
+	}
 );

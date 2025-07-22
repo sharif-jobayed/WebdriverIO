@@ -81,6 +81,3 @@ Feature: Employee Management with OrangeHRM
 
 # @searchEmployeeById
 # Scenario: Search Employee by ID
-#   When I am on the PIM page
-#   When I search the employee by saved employee ID
-#   Then the employee should be found in the results
