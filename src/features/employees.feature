@@ -29,14 +29,15 @@ Feature: Employee Management with OrangeHRM
     And the "Add Employee" page is open
     And the "Add Employee" page is loaded
 
-    When I enter the employee's first name and last name and ID on "Add Employee" page
-    And I enable the Create Login Details toggle on "Add Employee" page
-    And I enter the username and password on "Add Employee" page
-    And I submit the employee creation form on "Add Employee" page
+    # When I enter the employee's first name and last name and ID on "Add Employee" page
+    # And I enable the Create Login Details toggle on "Add Employee" page
+    # And I enter the username and password on "Add Employee" page
+    And I fill up and submit the employee creation form on "Add Employee" page
     Then I am on the "Personal Details" page
     And the "Personal Details" page is open
     And the "Personal Details" page is loaded
-    And I should see the newly created employee's first name and last name on "Personal Details" page
+    # And I should see the newly created employee's first name and last name on "Personal Details" page
+    Then And I should see the newly created employee's full name on "Personal Details" page
 
   @update
   Scenario: Update Employee Information

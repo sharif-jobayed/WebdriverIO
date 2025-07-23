@@ -6,7 +6,7 @@ import { readFileSync } from 'fs';
 const pageBuilder = new PageBuilder();
 let page;
 
-const getAppData = async () => {
+/* const getAppData = async () => {
 	const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
 	return appData;
 }
@@ -14,7 +14,7 @@ const getAppData = async () => {
 const getEmployeeCreds = async () => {
 	const credentials = JSON.parse(readFileSync(new URL('../data/employeeCredentials.json', import.meta.url)));
 	return credentials;
-}
+} */
 
 Given(
 	/^I open the "(.*)" page$/,
@@ -81,7 +81,7 @@ Given(
 	}
 );
 
-When(
+/* When(
 	/^I enter the employee's first name and last name and ID on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
@@ -103,27 +103,40 @@ When(
 		page = await pageBuilder.getPage(pageName);
 		await page.enterLoginDetails();
 	}
-);
+); */
 
 When(
-	/^I submit the employee creation form on "(.*)" page$/,
+	/^I fill up and submit the employee creation form on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		return await page.clickSubmit();
+		await page.enterEmployeeInfo();
+		await page.enableCreateLoginDetailsToggle();
+		await page.enterLoginDetails();
+		await page.clickSubmit();
 	}
 );
 
-Then(
-	/^I should see the newly created employee's first name and last name on "(.*)" page$/,
-	async function (pageName) {
-		page = await pageBuilder.getPage(pageName);
-		const creds = await getEmployeeCreds();
-		const actualFirstName = await page.getFirstNameValue();
-		const actualLastName = await page.getLastNameValue();
-		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
-		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
+// Then(
+// 	/^I should see the newly created employee's first name and last name on "(.*)" page$/,
+// 	async function (pageName) {
+// 		page = await pageBuilder.getPage(pageName);
+// 		const creds = await getEmployeeCreds();
+// 		const actualFirstName = await page.getFirstNameValue();
+// 		const actualLastName = await page.getLastNameValue();
+// 		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
+// 		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
 
-		await page.setPersonalDetails();
+// 		await page.setPersonalDetails();
+// 	}
+// );
+
+Then(
+	/^And I should see the newly created employee's full name on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.isPageOpen(30000);
+		await page.isPageLoaded(30000);
+		assert.equal(await page.getProfileName(), await page.getNameFromCreds(), 'The profile name does not match');
 	}
 );
 

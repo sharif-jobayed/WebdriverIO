@@ -6,16 +6,16 @@ const generateRandomUserData = () => {
 	return {
 		firstName: faker.person.firstName(),
 		middleName: faker.person.middleName(),
-		employeeId: faker.string.numeric({ length: 4 }),
+		employeeId: Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
 		lastName: faker.person.lastName(),
 		email: faker.internet.email(),
 		username: faker.internet.username(),
-		password: faker.internet.password({
-			length: 10,
-			memorable: false,
-			pattern: /[A-Za-z0-9!@#$%^&*()]/,
-			prefix: '!Aa1'
-		}),
+		password: faker.internet.password(
+			10,
+			false,
+			/[A-Za-z0-9!@#$%^&*()]/,
+			'!Aa1'
+		),
 		phoneNumber: faker.phone.number(),
 		address: {
 			street: faker.location.streetAddress(),
