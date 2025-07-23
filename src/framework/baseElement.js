@@ -10,6 +10,7 @@ class BaseElement {
 	}
 
 	getLocators() {
+		// This method should return an array of locators
 		return $$(this.locator);
 	}
 
@@ -61,6 +62,10 @@ class BaseElement {
 			return await this.getLocator().getValue();
 		}
 		return ``;
+	}
+
+	async getLength() {
+		return this.getLocators().length;
 	}
 
 	async clearAndType(value, timeout = 5000) {
