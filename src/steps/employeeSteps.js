@@ -123,7 +123,7 @@ Then(
 		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
 		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
 
-		await page.setPersonalDetails()
+		await page.setPersonalDetails();
 	}
 );
 

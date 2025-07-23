@@ -32,6 +32,7 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async clickEmployeeListButton() {
+		// profile updates here...
 		await this.employeeListBtn.doClick();
 	}
 }
