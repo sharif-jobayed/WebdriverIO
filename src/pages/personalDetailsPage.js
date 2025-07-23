@@ -28,11 +28,11 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async setPersonalDetails() {
+		// profile updates here...
 		await this.savePersonalDetailsBtn.doClick(60000);
 	}
 
 	async clickEmployeeListButton() {
-		// profile updates here...
 		await this.employeeListBtn.doClick();
 	}
 }
