@@ -1,3 +1,4 @@
+import {$, $$} from '@wdio/globals';
 
 class BaseElement {
 
@@ -5,29 +6,28 @@ class BaseElement {
 		this.locator = locator;
 	}
 
-	getLocator() {
+	get elLocator() {
 		return $(this.locator);
 	}
 
-	getLocators() {
-		// This method should return an array of locators
+	get elLocators() {
 		return $$(this.locator);
 	}
 
 	async isVisible(timeout = 5000) {
-		await this.getLocator().waitForDisplayed({ timeout });
-		return await this.getLocator().isDisplayed();
+		await this.elLocator.waitForDisplayed({ timeout });
+		return await this.elLocator.isDisplayed();
 	}
 
 	async isExist(timeout = 5000) {
-		await this.getLocator().waitForExist({ timeout });
-		return await this.getLocator().isExisting();
+		await this.elLocator.waitForExist({ timeout });
+		return await this.elLocator.isExisting();
 	}
 
 	async isEnabled(timeout = 5000) {
 		try {
-			await this.getLocator().waitForEnabled({ timeout });
-			return await this.getLocator().isEnabled();
+			await this.elLocator.waitForEnabled({ timeout });
+			return await this.elLocator.isEnabled();
 		} catch (err) {
 			console.warn(`${this.elementName} not enabled within ${timeout}ms`);
 			return false;
@@ -35,54 +35,53 @@ class BaseElement {
 	}
 
 	async isClickable(timeout = 5000) {
-		await this.getLocator().waitForClickable({ timeout });
-		return await this.getLocator().isClickable();
+		await this.elLocator.waitForClickable({ timeout });
+		return await this.elLocator.isClickable();
 	}
 
 	async isChecked(timeout = 5000) {
-		await this.getLocator().waitForChecked({ timeout });
-		return await this.getLocator().isChecked();
+		await this.elLocator.waitForChecked({ timeout });
+		return await this.elLocator.isChecked();
 	}
 
 	async doClick(timeout = 5000) {
 		if (await this.isClickable(timeout)) {
-			await this.getLocator().click();
+			await this.elLocator.click();
 		}
 	}
 
 	async getText(timeout = 5000) {
 		if (await this.isVisible(timeout)) {
-			return await this.getLocator().getText();
+			return await this.elLocator.getText();
 		}
 		return ``;
 	}
 
 	async getValue(timeout = 5000) {
 		if (await this.isExist(timeout)) {
-			return await this.getLocator().getValue();
+			return await this.elLocator.getValue();
 		}
 		return ``;
 	}
 
 	async getLength() {
-		return this.getLocators().length;
+		return this.elLocators.length;
 	}
 
 	async clearAndType(value, timeout = 5000) {
 		if (await this.isEnabled(timeout)) {
 			try {
-				await this.getLocator().clearValue();
-				await this.getLocator().setValue(value);
+				await this.elLocator.clearValue();
+				await this.elLocator.setValue(value);
 			} catch (err) {
 				console.error(`Error clearing and typing value: ${err.message}`);
 			}
 		}
-
 	}
 
 	async scrollTo(timeout = 5000) {
 		if (await this.isExist(timeout)) {
-			await this.getLocator().scrollIntoView();
+			await this.elLocator.scrollIntoView();
 		} else {
 			console.warn(`${this.elementName} not found to scroll into view`);
 		}
