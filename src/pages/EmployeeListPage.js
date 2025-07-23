@@ -58,10 +58,25 @@ class EmployeeList extends BasePage {
 	}
 
 	async isEmployeeInList(empId) {
-		for(let i = 0; i < await this.empIdsColumn.getLength(); i++) {
-			if (await this.empIdsColumn.getText() === empId) {
-				return true;
-			} else {
+		if(empId) {
+			await this.enterEmployeeIdAndSearch(empId);
+			const empIds = await this.empIdsColumn.getLocators();
+			for (let i = 0; i < empIds.length; i++) {
+				const empIdText = await empIds[i].getText();
+				if (empIdText === empId.toString()) {
+					return true;
+				}
+			}
+			return false;
+		} else {
+			const emplyeeId = await this.getEmployeeCreds().then(data => data.employeeId);
+			await this.enterEmployeeIdAndSearch(emplyeeId);
+			const empIds = await this.empIdsColumn.getLocators();
+			for (let i = 0; i < empIds.length; i++) {
+				const empIdText = await empIds[i].getText();
+				if (empIdText === emplyeeId.toString()) {
+					return true;
+				}
 				return false;
 			}
 		}
