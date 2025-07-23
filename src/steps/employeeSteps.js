@@ -131,7 +131,7 @@ When(
 	/^I search for employee's id in search field on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.enterEmployeeIdAndSearch();
+		await page.enterEmployeeIdAndSearch(1235);
 	}
 );
 

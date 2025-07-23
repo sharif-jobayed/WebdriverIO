@@ -76,7 +76,7 @@ Feature: Employee Management with OrangeHRM
 
     When I enter a name in the search field on "View Directory" page
     Then the names dropdown is opened on "View Directory" page
-    And I select a name from the names dropdown on "View Directory" page    
+    And I select a name from the names dropdown on "View Directory" page
     Then I click the employee card on "View Directory" page and the profile is opened
 
 
