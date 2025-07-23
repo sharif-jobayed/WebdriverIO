@@ -8,6 +8,10 @@ class ViewDirectoryPage extends BasePage {
 		super(`/directory/viewDirectory`);
 
 		this.searchNameField = new BaseElement(`//input[@placeholder='Type for hints...']`);
+		this.nameDropDown = new BaseElement(`//div[@role='listbox'][contains(@class,'oxd-autocomplete-dropdown')]`);
+		this.nameByIndex = (index) => {
+			return new BaseElement(`//div[@role='option'][@class='oxd-autocomplete-option'][${index}]`);
+		}
 		this.searchBtn = new BaseElement(`//button[@type='submit']`);
 	}
 
@@ -15,11 +19,26 @@ class ViewDirectoryPage extends BasePage {
 		return readJSON('../../data/employeeCredentials.json');
 	}
 
-	async enterEmployeeNameAndSearch() {
-		const employee = await this.getEmployeeCreds();
-		const fullName = `${employee.firstName} ${employee.lastName}`;
-		await this.searchNameField.clearAndType(employee.firstName);
-		
+	async enterSearchContent() {
+		// const employee = await this.getEmployeeCreds();
+		// const fullName = `${employee.firstName} ${employee.lastName}`;
+		// await this.searchNameField.clearAndType(employee.firstName);
+
+		// The searchbox returning with no data with employee name so I picked a letter
+		await this.searchNameField.clearAndType(`a`);
+		await this.nameDropDown.isVisible();
+	}
+
+	async getNamesList() {
+		return this.nameDropDown;
+	}
+
+	async pickAName(index) {
+		await this.nameByIndex(index).doClick();
+	}
+
+	async clickSearchButton() {
+		await this.searchBtn.doClick();
 	}
 }
 

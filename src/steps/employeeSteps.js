@@ -163,20 +163,22 @@ When (
 	/^I enter a name in the search field on "(.*)" page$/,
 	async function (pageName) {
 		this.page = await pageBuilder.getPage(pageName);
-		await this.page.enterEmployeeNameAndSearch();
+		await this.page.enterSearchContent();
 	}
 );
 
 Then(
 	/^the names dropdown is opened on "(.*)" page$/,
 	async function (pageName) {
-		// Waiting for the app to be accessible
+		page = await pageBuilder.getPage(pageName);
+		assert.isTrue(await page.getNamesList().isVisible(), 'The names dropdown is not visible');
 	}
 );
 
 When(
 	/^I select a name from the names dropdown on "(.*)" page$/,
 	async function (pageName) {
-		// Waiting for the app to be accessible
+		page = await pageBuilder.getPage(pageName);
+		await page.pickAName(1);
 	}
 );
