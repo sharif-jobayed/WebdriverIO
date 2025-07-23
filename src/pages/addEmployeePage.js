@@ -3,7 +3,7 @@ import { BaseElement } from '../framework/baseElement.js';
 import { generateRandomUserData, writeJSON, readJSON } from '../framework/utils/randomData.js';
 
 let cachedEmployeeData = null;
-let	savedCredentials = null;
+let savedCredentials = null;
 
 class AddEmployeePage extends BasePage {
 	constructor() {
@@ -19,8 +19,6 @@ class AddEmployeePage extends BasePage {
 		this.passwordField = new BaseElement(`//input[@type='password']`);
 		this.confirmPasswordField = new BaseElement(`//label[text()='Confirm Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input[@type='password']`);
 	}
-
-	_currentEmployeeData = null;
 
 	randomEmployeeData() {
 		if (!cachedEmployeeData) {

@@ -35,10 +35,9 @@ Given(
 	/^I wait on the "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.waitOnPage(appData.Timeouts.Med);
+		assert.isTrue(await page.getProfileNameEl().isVisible(appData.Timeouts.Med), `Not waited on the ${pageName} page`);
 	}
 );
-
 
 When(
 	/^I login with valid admin credentials on the "(.*)" page$/,

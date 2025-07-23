@@ -10,9 +10,6 @@ Feature: Employee Management with OrangeHRM
     And the "Dashboard" page is loaded
     Then I should see the "Dashboard" page
 
-  # @login
-  # Scenario: Log in as Admin
-
   @create
   Scenario: Create a New Employee with Login Details
     When I click on the PIM menu on "Dashboard" page
@@ -32,7 +29,6 @@ Feature: Employee Management with OrangeHRM
     Then And I should see the newly created employee's full name on "Personal Details" page
     Then the "Personal Details" page is open
     And the "Personal Details" page is loaded
-    # Then I should see the "Personal Details" page
     And I wait on the "Personal Details" page
 
   @update
@@ -65,7 +61,3 @@ Feature: Employee Management with OrangeHRM
     Then the names dropdown is opened on "View Directory" page
     And I select a name from the names dropdown on "View Directory" page
     Then I click the employee card on "View Directory" page and the profile is opened
-
-
-# @searchEmployeeById
-# Scenario: Search Employee by ID

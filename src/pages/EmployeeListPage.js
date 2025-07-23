@@ -1,7 +1,6 @@
 import { BasePage } from '../framework/basePage.js';
 import { readJSON } from '../framework/utils/randomData.js'
 import { BaseElement } from '../framework/baseElement.js';
-import { PersonalDetailsPage } from './personalDetailsPage.js';
 
 class EmployeeList extends BasePage {
 

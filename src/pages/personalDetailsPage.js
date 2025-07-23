@@ -40,8 +40,8 @@ class PersonalDetailsPage extends BasePage {
 		await this.employeeListBtn.doClick();
 	}
 
-	async getProfileName() {
-		return this.profileNameEl.getText(30000);
+	getProfileNameEl() {
+		return this.profileNameEl;
 	}
 
 	async getNameFromCreds() {
