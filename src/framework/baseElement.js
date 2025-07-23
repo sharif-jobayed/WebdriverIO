@@ -1,4 +1,4 @@
-import {$, $$} from '@wdio/globals';
+import { $, $$ } from '@wdio/globals';
 
 class BaseElement {
 
@@ -68,11 +68,32 @@ class BaseElement {
 		return this.elLocators.length;
 	}
 
-	async clearAndType(value, timeout = 5000) {
+	// async clearAndType(value, timeout = 5000) {
+	// 	if (await this.isEnabled(timeout)) {
+	// 		try {
+	// 			await this.elLocator.clearValue();
+	// 			await this.elLocator.setValue(value);
+	// 		} catch (err) {
+	// 			console.error(`Error clearing and typing value: ${err.message}`);
+	// 		}
+	// 	}
+	// }
+
+	async clearAndType(text, timeout = 5000) {
+
+
 		if (await this.isEnabled(timeout)) {
 			try {
-				await this.elLocator.clearValue();
-				await this.elLocator.setValue(value);
+				// await this.elLocator.clearValue();
+
+				const selectorValue = await this.getValue();
+				const selector = this.elLocator;
+				if ((await this.elLocator.getValue()).length > 0) {
+					let empty = new Array(selectorValue.length).fill(``);
+					await selector.setValue(empty);
+				} else {
+					await selector.setValue(text);
+				}
 			} catch (err) {
 				console.error(`Error clearing and typing value: ${err.message}`);
 			}
