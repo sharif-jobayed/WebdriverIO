@@ -25,19 +25,6 @@ class EmployeeList extends BasePage {
 		await this.addBtn.doClick();
 	}
 
-	/* async enterEmployeeIdAndSearch(empId) {
-		if (empId) {
-			await this.empIdSearchField.clearAndType(empId);
-			await this.searchBtn.doClick();
-			console.log(`Employee ID: ${empId} entered and searched`);
-		} else {
-			const emplyeeId = await this.getEmployeeCreds().then(data => data.employeeId);
-			await this.empIdSearchField.clearAndType(emplyeeId);
-			await this.searchBtn.doClick();
-			console.log(`Employee ID: ${emplyeeId} entered and searched`);
-		}
-	} */
-
 	async enterEmployeeIdAndSearch(empId) {
 		if (empId) {
 			await this.empIdSearchField.clearAndType(empId);
@@ -45,7 +32,6 @@ class EmployeeList extends BasePage {
 			console.log(`Employee ID: ${empId} entered and searched`);
 			await this.resultCount.isVisible();
 			console.log(await this.resultCount.getText());
-			console.log(`Found employees: ${await this.empIdsColumn.getLength()}`);
 		} else {
 			const emplyeeId = await this.getEmployeeCreds().then(data => data.employeeId);
 			await this.empIdSearchField.clearAndType(emplyeeId);
@@ -53,7 +39,6 @@ class EmployeeList extends BasePage {
 			console.log(`Employee ID: ${emplyeeId} entered and searched`);
 			await this.resultCount.isVisible();
 			console.log(await this.resultCount.getText());
-			console.log(`Found employees: ${await this.empIdsColumn.getLength()}`);
 		}
 	}
 
