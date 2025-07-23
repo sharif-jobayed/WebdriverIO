@@ -13,6 +13,8 @@ class ViewDirectoryPage extends BasePage {
 			return new BaseElement(`//div[@role='option'][@class='oxd-autocomplete-option'][${index}]`);
 		}
 		this.searchBtn = new BaseElement(`//button[@type='submit']`);
+		this.employeeCard = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`);
+		this.employeeProfileCard = new BaseElement(`//div[@class='orangehrm-corporate-directory-sidebar']//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`);
 	}
 
 	getEmployeeCreds = async () => {
@@ -24,8 +26,8 @@ class ViewDirectoryPage extends BasePage {
 		// const fullName = `${employee.firstName} ${employee.lastName}`;
 		// await this.searchNameField.clearAndType(employee.firstName);
 
-		// The searchbox returning with no data with employee name so I picked a letter
-		await this.searchNameField.clearAndType(`a`);
+		// The searchbox returning with no data with employee name so I picked a letter (The searchbox has several issues)
+		await this.searchNameField.clearAndType(`b`);
 		await this.nameDropDown.isVisible();
 	}
 
@@ -39,6 +41,11 @@ class ViewDirectoryPage extends BasePage {
 
 	async clickSearchButton() {
 		await this.searchBtn.doClick();
+	}
+
+	async viewEmployeeProfile() {
+		await this.employeeCard.doClick();
+		await this.employeeProfileCard.isVisible();
 	}
 }
 

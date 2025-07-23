@@ -175,3 +175,12 @@ When(
 		await page.pickAName(1);
 	}
 );
+
+Then(
+	/^I click the employee card on "(.*)" page and the profile is opened$/,
+	async function (pageName) {
+		page = await pageBuilder.getPage(pageName);
+		await page.viewEmployeeProfile();
+		assert.isTrue(await page.viewEmployeeProfile(), 'The employee profile is not opened');
+	}
+);
