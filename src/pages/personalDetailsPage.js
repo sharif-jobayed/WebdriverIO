@@ -40,16 +40,18 @@ class PersonalDetailsPage extends BasePage {
 		await this.employeeListBtn.doClick();
 	}
 
-	getProfileName() {
-		console.log(`Profile name: ${this.profileNameEl.getText(30000)}`);
+	async getProfileName() {
 		return this.profileNameEl.getText(30000);
 	}
 
 	async getNameFromCreds() {
-		console.log(`From creds: ${await this.getEmployeeCreds().firstName} ${await this.getEmployeeCreds().lastName}`);
-		return this.getProfileName() == `${await this.getEmployeeCreds().firstName} ${await this.getEmployeeCreds().lastName}`;
-		
+		return `${await this.getEmployeeCreds().then(data => data.firstName)} ${await this.getEmployeeCreds().then(data => data.lastName)}`;		
 	}
+
+	async getFullName() {
+		return `${await this.getFirstNameValue()} ${await this.getLastNameValue()}`;
+	}
+
 }
 
 export { PersonalDetailsPage }

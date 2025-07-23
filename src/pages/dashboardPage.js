@@ -8,20 +8,9 @@ class DashboardPage extends BasePage {
 	constructor() {
 		super(`/dashboard/index`);
 
-		this.body = new BaseElement(`//div[@id='app']`);
 		this.pimLink = new BaseElement(`//span[normalize-space()='PIM']`);
 		this.directoryLink = new BaseElement(`//span[normalize-space()='Directory']`);
 
-	}
-
-	async isPageVisible() {
-		try {
-			await this.body.isVisible();
-			return true;
-		} catch (error) {
-			console.error(`Dashboard page is not visible: ${error.message}`);
-			return false;
-		}
 	}
 
 	async clickPIMLink() {

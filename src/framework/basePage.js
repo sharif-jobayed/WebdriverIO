@@ -1,6 +1,5 @@
-import { readFileSync } from 'fs';
-const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
-import {BaseElement} from './baseElement.js';
+import {browser} from '@wdio/globals';
+import {BaseElement} from './baseElement';
 
 class BasePage {
 
@@ -23,6 +22,16 @@ class BasePage {
 
 	async getTitle() {
 		return browser.getTitle();
+	}	
+
+	async isPageVisible() {
+		try {
+			await this.app.isVisible();
+			return true;
+		} catch (error) {
+			console.error(`The ${this.getTitle()} page is not visible: ${error.message}`);
+			return false;
+		}
 	}
 
 	async isPageOpen(timeout = 10000) {
@@ -31,7 +40,7 @@ class BasePage {
 				async () => this.app.isExist(),
 				{
 					timeout: timeout,
-					timeoutMsg: `Page did not open. Expected element to exist within ${timeout}ms.`,
+					timeoutMsg: `The ${this.getTitle()} page did not open. Expected element to exist within ${timeout}ms.`,
 				}
 			);
 			return true;
@@ -47,7 +56,7 @@ class BasePage {
 				async () => (await browser.execute(() => document.readyState)) === 'complete',
 				{
 					timeout: timeout,
-					timeoutMsg: `Page did not reach "complete" readyState within ${timeout}ms.`,
+					timeoutMsg: `The ${this.getTitle()} page did not reach "complete" readyState within ${timeout}ms.`,
 				}
 			);
 			return true;
@@ -98,6 +107,9 @@ class BasePage {
 		await browser.refresh();
 	}
 
+	async waitOnPage(milliseconds) {
+		await browser.pause(milliseconds);
+	}
 }
 
 export { BasePage }

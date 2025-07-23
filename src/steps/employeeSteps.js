@@ -1,20 +1,11 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import { PageBuilder } from '../framework/pageBuilder.js';
 import { assert } from 'chai';
-import { readFileSync } from 'fs';
+import { readJSON } from '../framework/utils/randomData.js';
 
 const pageBuilder = new PageBuilder();
+const appData = readJSON(`../../data/appData.json`);
 let page;
-
-/* const getAppData = async () => {
-	const appData = JSON.parse(readFileSync(new URL('../data/appData.json', import.meta.url)));
-	return appData;
-}
-
-const getEmployeeCreds = async () => {
-	const credentials = JSON.parse(readFileSync(new URL('../data/employeeCredentials.json', import.meta.url)));
-	return credentials;
-} */
 
 Given(
 	/^I open the "(.*)" page$/,
@@ -39,6 +30,15 @@ Then(
 		assert.isTrue(await page.isPageLoaded(), `The ${pageName} page is not loaded`);
 	}
 );
+
+Given(
+	/^I wait on the "(.*)" page$/,
+	async function (pageName) {
+		page = await pageBuilder.getPage(pageName);
+		await page.waitOnPage(appData.Timeouts.Med);
+	}
+);
+
 
 When(
 	/^I login with valid admin credentials on the "(.*)" page$/,
@@ -81,30 +81,6 @@ Given(
 	}
 );
 
-/* When(
-	/^I enter the employee's first name and last name and ID on "(.*)" page$/,
-	async function (pageName) {
-		page = await pageBuilder.getPage(pageName);
-		await page.enterEmployeeInfo();
-	}
-);
-
-When(
-	/^I enable the Create Login Details toggle on "(.*)" page$/,
-	async function (pageName) {
-		page = await pageBuilder.getPage(pageName);
-		await page.enableCreateLoginDetailsToggle();
-	}
-);
-
-When(
-	/^I enter the username and password on "(.*)" page$/,
-	async function (pageName) {
-		page = await pageBuilder.getPage(pageName);
-		await page.enterLoginDetails();
-	}
-); */
-
 When(
 	/^I fill up and submit the employee creation form on "(.*)" page$/,
 	async function (pageName) {
@@ -116,27 +92,11 @@ When(
 	}
 );
 
-// Then(
-// 	/^I should see the newly created employee's first name and last name on "(.*)" page$/,
-// 	async function (pageName) {
-// 		page = await pageBuilder.getPage(pageName);
-// 		const creds = await getEmployeeCreds();
-// 		const actualFirstName = await page.getFirstNameValue();
-// 		const actualLastName = await page.getLastNameValue();
-// 		assert.equal(actualFirstName, creds.firstName, `The first name does not match: expected ${creds.firstName}`);
-// 		assert.equal(actualLastName, creds.lastName, `The last name does not match: expected ${creds.lastName}`);
-
-// 		await page.setPersonalDetails();
-// 	}
-// );
-
 Then(
 	/^And I should see the newly created employee's full name on "(.*)" page$/,
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
-		await page.isPageOpen(30000);
-		await page.isPageLoaded(30000);
-		assert.equal(await page.getProfileName(), await page.getNameFromCreds(), 'The profile name does not match');
+		assert.strictEqual(await page.getFullName(), await page.getNameFromCreds(), 'The profile name does not match');
 	}
 );
 
@@ -153,7 +113,7 @@ Then(
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
 		const isEmployeeInList = await page.isEmployeeInList();
-		assert.isTrue(isEmployeeInList, 'The employee is not found in the list');
+		assert.isTrue(await isEmployeeInList, 'The employee is not found in the list');
 	}
 );
 

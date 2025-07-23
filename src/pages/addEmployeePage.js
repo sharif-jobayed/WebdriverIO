@@ -32,6 +32,8 @@ class AddEmployeePage extends BasePage {
 				employeeId: randomUserData.employeeId,
 			};
 		}
+
+		console.log(`Cached employee data: ${JSON.stringify(cachedEmployeeData, null, 2)}`);
 		return cachedEmployeeData;
 	}
 
@@ -40,6 +42,8 @@ class AddEmployeePage extends BasePage {
 		await this.firstNameField.clearAndType(data.firstName);
 		await this.lastNameField.clearAndType(data.lastName);
 		await this.employeeIdField.clearAndType(data.employeeId);
+
+		console.log(`Employee info entered: ${JSON.stringify(data, null, 2)}`);
 	}
 
 	async enableCreateLoginDetailsToggle() {
@@ -52,6 +56,8 @@ class AddEmployeePage extends BasePage {
 		await this.usernameField.clearAndType(userData.username);
 		await this.passwordField.clearAndType(userData.password);
 		await this.confirmPasswordField.clearAndType(userData.password);
+
+		console.log(`Employee login credentials entered: ${JSON.stringify(userData, null, 2)}`);
 	}
 
 	async saveEmployeeCredentials() {
@@ -63,6 +69,7 @@ class AddEmployeePage extends BasePage {
 			firstName: userData.firstName,
 			lastName: userData.lastName
 		};
+		console.log(`Employee credentials saved: ${JSON.stringify(credentials, null, 2)}`)
 		writeJSON(credentials);
 	}
 
@@ -70,6 +77,8 @@ class AddEmployeePage extends BasePage {
 		this.saveEmployeeCredentials();
 		const result = await this.saveButton.doClick();
 		cachedEmployeeData = null;
+
+		console.log(`Employee saved: ${JSON.stringify(result, null, 2)}`);
 		return result;
 	}
 

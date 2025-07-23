@@ -1,6 +1,5 @@
 import { BasePage } from '../framework/basePage.js';
-import { read, readFileSync } from 'fs';
-import { generateRandomUserData, writeJSON, readJSON } from '../framework/utils/randomData.js'
+import { readJSON } from '../framework/utils/randomData.js'
 import { BaseElement } from '../framework/baseElement.js';
 
 class EmployeeList extends BasePage {
@@ -43,8 +42,8 @@ class EmployeeList extends BasePage {
 	}
 
 	async isEmployeeInList(empId) {
-		if(empId) {
-			const empIds = await this.empIdsColumn.getLocators();
+		if (empId) {
+			const empIds = this.empIdsColumn.elLocators;
 			for (let i = 0; i < empIds.length; i++) {
 				const empIdText = await empIds[i].getText();
 				if (empIdText === empId.toString()) {
@@ -54,7 +53,7 @@ class EmployeeList extends BasePage {
 			return false;
 		} else {
 			const emplyeeId = await this.getEmployeeCreds().then(data => data.employeeId);
-			const empIds = await this.empIdsColumn.getLocators();
+			const empIds = this.empIdsColumn.elLocators;
 			for (let i = 0; i < empIds.length; i++) {
 				const empIdText = await empIds[i].getText();
 				if (empIdText === emplyeeId.toString()) {
