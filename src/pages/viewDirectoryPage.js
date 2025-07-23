@@ -29,7 +29,7 @@ class ViewDirectoryPage extends BasePage {
 		await this.nameDropDown.isVisible();
 	}
 
-	async getNamesList() {
+	getNamesDropdown() {
 		return this.nameDropDown;
 	}
 
