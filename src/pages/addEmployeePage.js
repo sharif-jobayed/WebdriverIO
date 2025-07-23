@@ -3,6 +3,7 @@ import { BaseElement } from '../framework/baseElement.js';
 import { generateRandomUserData, writeJSON, readJSON } from '../framework/utils/randomData.js';
 
 let cachedEmployeeData = null;
+let	savedCredentials = null;
 
 class AddEmployeePage extends BasePage {
 	constructor() {
@@ -62,15 +63,15 @@ class AddEmployeePage extends BasePage {
 
 	async saveEmployeeCredentials() {
 		const userData = await this.randomEmployeeData();
-		const credentials = {
+		savedCredentials = {
 			employeeId: userData.employeeId,
 			username: userData.username,
 			password: userData.password,
 			firstName: userData.firstName,
 			lastName: userData.lastName
 		};
-		console.log(`Employee credentials saved: ${JSON.stringify(credentials, null, 2)}`)
-		writeJSON(credentials);
+		console.log(`Employee credentials saved: ${JSON.stringify(savedCredentials, null, 2)}`)
+		writeJSON(savedCredentials);
 	}
 
 	async clickSubmit() {
@@ -82,6 +83,9 @@ class AddEmployeePage extends BasePage {
 		return result;
 	}
 
+	async getSavedCredentials() {
+		return this.savedCredentials;
+	}
 }
 
 export { AddEmployeePage }
