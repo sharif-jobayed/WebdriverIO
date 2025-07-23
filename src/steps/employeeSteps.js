@@ -131,7 +131,7 @@ When(
 	/^I search for employee's id in search field on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.enterEmployeeIdAndSearch(4576);
+		await page.enterEmployeeIdAndSearch();
 	}
 );
 
@@ -139,7 +139,7 @@ Then(
 	/^I should see the employee's profile in search results on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		const isEmployeeInList = await page.isEmployeeInList(4576);
+		const isEmployeeInList = await page.isEmployeeInList();
 		assert.isTrue(isEmployeeInList, 'The employee is not found in the list');
 	}
 );

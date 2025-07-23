@@ -68,20 +68,7 @@ class BaseElement {
 		return this.elLocators.length;
 	}
 
-	// async clearAndType(value, timeout = 5000) {
-	// 	if (await this.isEnabled(timeout)) {
-	// 		try {
-	// 			await this.elLocator.clearValue();
-	// 			await this.elLocator.setValue(value);
-	// 		} catch (err) {
-	// 			console.error(`Error clearing and typing value: ${err.message}`);
-	// 		}
-	// 	}
-	// }
-
 	async clearAndType(text, timeout = 5000) {
-
-
 		if (await this.isEnabled(timeout)) {
 			try {
 				// await this.elLocator.clearValue();
