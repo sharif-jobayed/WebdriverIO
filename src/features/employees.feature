@@ -12,7 +12,7 @@ Feature: Employee Management with OrangeHRM
     And the "Dashboard" page is loaded
     Then I should see the "Dashboard" page
 
-  @createEmployee
+  @create
   Scenario: Create a New Employee with Login Details
     When I login with valid admin credentials on the "Login" page
     Then the "Dashboard" page is open
@@ -38,7 +38,7 @@ Feature: Employee Management with OrangeHRM
     And the "Personal Details" page is loaded
     And I should see the newly created employee's first name and last name on "Personal Details" page
 
-  @employeeInformationUpdate
+  @update
   Scenario: Update Employee Information
     When I login with valid admin credentials on the "Login" page
     Then the "Dashboard" page is open
@@ -62,7 +62,7 @@ Feature: Employee Management with OrangeHRM
   # And I click save button on "Personal Details" page
   # Then I am on the "Personal Details" page
 
-  @searchInDirectoryByEmployeeName
+  @searchByName
   Scenario: Search in Directory by Employee Name
     When I login with valid admin credentials on the "Login" page
     Then the "Dashboard" page is open
