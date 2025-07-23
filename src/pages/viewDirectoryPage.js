@@ -8,7 +8,7 @@ class ViewDirectoryPage extends BasePage {
 		super(`/directory/viewDirectory`);
 
 		this.searchNameField = new BaseElement(`//input[@placeholder='Type for hints...']`);
-		this.nameDropDown = new BaseElement(`//div[@role='listbox'][contains(@class,'oxd-autocomplete-dropdown')]`);
+		this.nameDropDown = new BaseElement(`//div[contains(@class, 'oxd-autocomplete-wrapper')]/div[contains(@class, 'oxd-autocomplete-dropdown')]`);
 		this.nameByIndex = (index) => {
 			return new BaseElement(`//div[@role='option'][@class='oxd-autocomplete-option'][${index}]`);
 		}
@@ -32,6 +32,7 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	getNamesDropdown() {
+		this.nameDropDown.isVisible();
 		return this.nameDropDown;
 	}
 
