@@ -28,16 +28,12 @@ class EmployeeList extends BasePage {
 		if (empId) {
 			await this.empIdSearchField.clearAndType(empId);
 			await this.searchBtn.doClick();
-			console.log(`Employee ID: ${empId} entered and searched`);
 			await this.resultCount.isVisible();
-			console.log(await this.resultCount.getText());
 		} else {
 			const employeeId = await this.getEmployeeCreds().then(data => data.employeeId);
 			await this.empIdSearchField.clearAndType(employeeId);
 			await this.searchBtn.doClick();
-			console.log(`Employee ID: ${employeeId} entered and searched`);
 			await this.resultCount.isVisible();
-			console.log(await this.resultCount.getText());
 		}
 	}
 

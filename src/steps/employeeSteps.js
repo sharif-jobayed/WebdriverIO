@@ -191,8 +191,11 @@ Then(
 );
 
 When(
-	/^$/,
-	async () => {}
+	/^I click save button on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.setPersonalDetails();
+	}
 );
 
 When(

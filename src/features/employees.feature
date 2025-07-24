@@ -50,8 +50,8 @@ Feature: Employee Management with OrangeHRM
     When I click nationality drop down arrow on "Personal Details" page
     Then country list is opened on "Personal Details" page
     Then I select "Bangladeshi" from the country list on "Personal Details" page
-  # And I click save button on "Personal Details" page
-  # Then I am on the "Personal Details" page
+    And I click save button on "Personal Details" page
+    Then I am on the "Personal Details" page
 
   @searchByName
   Scenario: Search in Directory by Employee Name

@@ -39,11 +39,6 @@ class PersonalDetailsPage extends BasePage {
 		return await this.employeeIdField.getValue();
 	}
 
-	async setPersonalDetails() {
-		// profile updates here...
-		await this.savePersonalDetailsBtn.doClick(60000);
-	}
-
 	async clickEmployeeListButton() {
 		await this.employeeListBtn.doClick();
 	}
@@ -75,6 +70,10 @@ class PersonalDetailsPage extends BasePage {
 
 	async getSelectedNationality(nationality) {
 		return this.selectedNationality(nationality).getText();
+	}
+
+	async setPersonalDetails() {
+		await this.savePersonalDetailsBtn.doClick();
 	}
 }
 
