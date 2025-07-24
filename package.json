@@ -22,7 +22,7 @@
     "update": "npx wdio --cucumberOpts.tagExpression='@update'",
     "delete": "npx wdio --cucumberOpts.tagExpression='@deleteEmployee'",
     "searchByName": "npx wdio --cucumberOpts.tagExpression='@searchByName'",
-    "report:generate": "allure generate allure-results --clean",
-    "report:open": "allure open"
+    "report:generate": "npx allure generate allure-results --clean",
+    "report:open": "npx allure open"
   }
 }
