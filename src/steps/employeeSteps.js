@@ -147,6 +147,7 @@ When(
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
 		await page.pickAName(1);
+		await page.clickSearchButton();
 	}
 );
 
@@ -154,8 +155,8 @@ Then(
 	/^I click the employee card on "(.*)" page and the profile is opened$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.viewEmployeeProfile();
-		assert.isTrue(await page.viewEmployeeProfile(), 'The employee profile is not opened');
+		await page.viewEmployeeCard();
+		assert.isTrue(await page.viewEmployeeCard(), 'The employee profile card is not visible');
 	}
 );
 

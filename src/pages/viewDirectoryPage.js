@@ -4,6 +4,7 @@ import { BasePage } from "../framework/basePage.js";
 import { BaseElement } from "../framework/baseElement.js";
 import { browser } from '@wdio/globals';
 
+let firstName;
 
 class ViewDirectoryPage extends BasePage {
 	constructor() {
@@ -15,7 +16,8 @@ class ViewDirectoryPage extends BasePage {
 			return new BaseElement(`//div[@role='listbox'][contains(@class,'oxd-autocomplete-dropdown')]//span[${index}]`);
 		}
 		this.searchBtn = new BaseElement(`//button[@type='submit']`);
-		this.employeeCard = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`);
+		this.employeeCards = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`).elLocators;
+		this.employeeCardName = new BaseElement(`//p[normalize-space()='${firstName}'`);
 		this.employeeProfileCard = new BaseElement(`//div[@class='orangehrm-corporate-directory-sidebar']//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`);
 	}
 
@@ -24,7 +26,7 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	async enterSearchContent() {
-		const firstName = await this.getEmployeeCreds().then(data => data.firstName);
+		firstName = await this.getEmployeeCreds().then(data => data.firstName);
 		await this.searchNameField.clearAndType(firstName);
 	}
 
@@ -39,16 +41,17 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	async pickAName(index) {
-		await this.nameByIndex(index).doClick();
+		const name = this.nameByIndex(index);
+		await name.doClick();
 	}
 
 	async clickSearchButton() {
 		await this.searchBtn.doClick();
 	}
 
-	async viewEmployeeProfile() {
-		await this.employeeCard.doClick();
-		await this.employeeProfileCard.isVisible();
+	async viewEmployeeCard() {
+		await this.employeeCards[0].click();
+		await this.employeeProfileCard.isVisible(Timeouts.LowMed);
 	}
 }
 
