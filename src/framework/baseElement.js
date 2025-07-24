@@ -71,15 +71,13 @@ class BaseElement {
 	async clearAndType(text, timeout = 5000) {
 		if (await this.isEnabled(timeout)) {
 			try {
-				// await this.elLocator.clearValue();
-
 				const selectorValue = await this.getValue();
-				const selector = this.elLocator;
+				// await this.elLocator.clearValue();
 				if ((await this.elLocator.getValue()).length > 0) {
 					let empty = new Array(selectorValue.length).fill(``);
-					await selector.setValue(empty);
+					await this.elLocator.setValue(empty);
 				} else {
-					await selector.setValue(text);
+					await this.elLocator.setValue(text);
 				}
 			} catch (err) {
 				console.error(`Error clearing and typing value: ${err.message}`);
