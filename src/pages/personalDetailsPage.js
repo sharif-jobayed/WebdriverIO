@@ -15,7 +15,12 @@ class PersonalDetailsPage extends BasePage {
 		this.nationalityDropdownArrow = new BaseElement(`//div[contains(@class, 'oxd-select-text--active')]//i[contains(@class, 'oxd-select-text--arrow')]`);
 		this.nationalitySelectionArrow = new BaseElement(`//label[text()='Nationality']/ancestor::div[contains(@class, 'oxd-input-group')]//i[contains(@class, 'oxd-select-text--arrow')]`);
 		this.countryList = new BaseElement(`//div[@role='listbox'][contains(@class,'oxd-select-dropdown')]`);
-
+		this.nationality = (nationality) => {
+			return new BaseElement(`//div[@role='option']/span[normalize-space()='${nationality}']`);
+		}
+		this.selectedNationality = (nationality) => {
+			return new BaseElement(`//div[@clear='false'][text()='${nationality}']`);
+		}
 	}
 
 	getEmployeeCreds = async () => {
@@ -63,6 +68,14 @@ class PersonalDetailsPage extends BasePage {
 		return this.countryList;
 	}
 
+	async selectNationality(nationality) {
+		await this.nationality(nationality).scrollTo();
+		await this.nationality(nationality).doClick();
+	}
+
+	async getSelectedNationality(nationality) {
+		return this.selectedNationality(nationality).getText();
+	}
 }
 
 export { PersonalDetailsPage }

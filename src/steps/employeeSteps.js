@@ -181,9 +181,13 @@ Then(
 	}
 );
 
-When(
-	/^$/,
-	async () => {}
+Then(
+	/^I select "(.*)" from the country list on "(.*)" page$/,
+	async (nationality, pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.selectNationality(nationality);
+		assert.strictEqual(await page.getSelectedNationality(nationality), nationality, 'The selected nationality is not correct');
+	}
 );
 
 When(
