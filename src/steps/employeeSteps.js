@@ -2,9 +2,9 @@ import { Given, When, Then } from '@wdio/cucumber-framework';
 import { PageBuilder } from '../framework/pageBuilder.js';
 import { assert } from 'chai';
 import { readJSON } from '../framework/utils/randomData.js';
+import {Timeouts} from '../data/appData.json';
 
 const pageBuilder = new PageBuilder();
-const appData = readJSON(`../../data/appData.json`);
 let page;
 
 Given(
@@ -35,7 +35,7 @@ Given(
 	/^I wait on the "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		assert.isTrue(await page.getProfileNameEl().isVisible(appData.Timeouts.Med), `Not waited on the ${pageName} page`);
+		assert.isTrue(await page.getProfileNameEl().isVisible(Timeouts.Med), `Not waited on the ${pageName} page`);
 	}
 );
 
@@ -156,7 +156,7 @@ Then(
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
 		await page.viewEmployeeCard();
-		assert.isTrue(await page.viewEmployeeCard(), 'The employee profile card is not visible');
+		assert.isTrue(await page.isProfileCardVisible(), 'The profile card is not visible');
 	}
 );
 

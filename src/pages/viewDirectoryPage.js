@@ -17,8 +17,8 @@ class ViewDirectoryPage extends BasePage {
 		}
 		this.searchBtn = new BaseElement(`//button[@type='submit']`);
 		this.employeeCards = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`).elLocators;
-		this.employeeCardName = new BaseElement(`//p[normalize-space()='${firstName}'`);
-		this.employeeProfileCard = new BaseElement(`//div[@class='orangehrm-corporate-directory-sidebar']//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`);
+		// this.employeeCardName = new BaseElement(`//p[normalize-space()='${firstName}'`);
+		this.employeeProfileCard = new BaseElement(`//div[@class='orangehrm-corporate-directory-sidebar']`);
 	}
 
 	getEmployeeCreds = async () => {
@@ -50,8 +50,16 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	async viewEmployeeCard() {
-		await this.employeeCards[0].click();
-		await this.employeeProfileCard.isVisible(Timeouts.LowMed);
+		for (let i = 0; i < await this.employeeCards.length; i++) {
+			await this.employeeCards[i].click();
+			await this.employeeProfileCard.isVisible(Timeouts.LowMed);
+			break;
+		}
+	}
+
+	async isProfileCardVisible() {
+		const iv = await this.employeeProfileCard.isVisible();
+		return iv;
 	}
 }
 
