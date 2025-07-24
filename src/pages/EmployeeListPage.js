@@ -44,7 +44,7 @@ class EmployeeList extends BasePage {
 	async isEmployeeInList(empId) {
 		if (empId) {
 			const empIds = this.empIdsColumn.elLocators;
-			for (let i = 0; i < empIds.length; i++) {
+			for (let i = 0; i < await empIds.length; i++) {
 				const empIdText = await empIds[i].getText();
 				if (empIdText === empId.toString()) {
 					return true;
@@ -54,7 +54,7 @@ class EmployeeList extends BasePage {
 		} else {
 			const employeeId = await this.getEmployeeCreds().then(data => data.employeeId);
 			const empIds = this.empIdsColumn.elLocators;
-			for (let i = 0; i < empIds.length; i++) {
+			for (let i = 0; i < await empIds.length; i++) {
 				const empIdText = await empIds[i].getText();
 				if (empIdText === employeeId) {
 					return true;

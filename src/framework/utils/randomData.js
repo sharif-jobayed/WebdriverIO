@@ -6,7 +6,8 @@ const generateRandomUserData = () => {
 	return {
 		firstName: faker.person.firstName(),
 		middleName: faker.person.middleName(),
-		employeeId: Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
+		// employeeId: Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
+		employeeId: faker.string.numeric(4),
 		lastName: faker.person.lastName(),
 		email: faker.internet.email(),
 		username: faker.internet.username(),

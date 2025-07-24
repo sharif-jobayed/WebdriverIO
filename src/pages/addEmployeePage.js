@@ -18,31 +18,29 @@ class AddEmployeePage extends BasePage {
 		this.usernameField = new BaseElement(`//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input`);
 		this.passwordField = new BaseElement(`//input[@type='password']`);
 		this.confirmPasswordField = new BaseElement(`//label[text()='Confirm Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input[@type='password']`);
+		this.randomUserData = generateRandomUserData();
 	}
 
 	randomEmployeeData() {
-		if (!cachedEmployeeData) {
-			const randomUserData = generateRandomUserData();
+		if (cachedEmployeeData === null) {
 			cachedEmployeeData = {
-				firstName: randomUserData.firstName,
-				lastName: randomUserData.lastName,
-				username: randomUserData.username,
-				password: randomUserData.password,
-				employeeId: randomUserData.employeeId,
+				firstName: this.randomUserData.firstName,
+				lastName: this.randomUserData.lastName,
+				username: this.randomUserData.username,
+				password: this.randomUserData.password,
+				employeeId: this.randomUserData.employeeId
 			};
 		}
 
-		console.log(`Cached employee data: ${JSON.stringify(cachedEmployeeData, null, 2)}`);
+
 		return cachedEmployeeData;
 	}
 
 	async enterEmployeeInfo() {
-		const data = await this.randomEmployeeData();
-		await this.firstNameField.clearAndType(data.firstName);
-		await this.lastNameField.clearAndType(data.lastName);
-		await this.employeeIdField.clearAndType(data.employeeId);
+		await this.firstNameField.clearAndType(this.randomUserData.firstName);
+		await this.lastNameField.clearAndType(this.randomUserData.lastName);
+		await this.employeeIdField.clearAndType(this.randomUserData.employeeId);
 
-		console.log(`Employee info entered: ${JSON.stringify(data, null, 2)}`);
 	}
 
 	async enableCreateLoginDetailsToggle() {
@@ -51,24 +49,20 @@ class AddEmployeePage extends BasePage {
 	}
 
 	async enterLoginDetails() {
-		const userData = await this.randomEmployeeData();
-		await this.usernameField.clearAndType(userData.username);
-		await this.passwordField.clearAndType(userData.password);
-		await this.confirmPasswordField.clearAndType(userData.password);
+		await this.usernameField.clearAndType(this.randomUserData.username);
+		await this.passwordField.clearAndType(this.randomUserData.password);
+		await this.confirmPasswordField.clearAndType(this.randomUserData.password);
 
-		console.log(`Employee login credentials entered: ${JSON.stringify(userData, null, 2)}`);
 	}
 
 	async saveEmployeeCredentials() {
-		const userData = await this.randomEmployeeData();
 		savedCredentials = {
-			employeeId: userData.employeeId,
-			username: userData.username,
-			password: userData.password,
-			firstName: userData.firstName,
-			lastName: userData.lastName
+			employeeId: this.randomUserData.employeeId,
+			username: this.randomUserData.username,
+			password: this.randomUserData.password,
+			firstName: this.randomUserData.firstName,
+			lastName: this.randomUserData.lastName
 		};
-		console.log(`Employee credentials saved: ${JSON.stringify(savedCredentials, null, 2)}`)
 		writeJSON(savedCredentials);
 	}
 
@@ -76,8 +70,6 @@ class AddEmployeePage extends BasePage {
 		this.saveEmployeeCredentials();
 		const result = await this.saveButton.doClick();
 		cachedEmployeeData = null;
-
-		console.log(`Employee saved: ${JSON.stringify(result, null, 2)}`);
 		return result;
 	}
 
