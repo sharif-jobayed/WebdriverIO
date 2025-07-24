@@ -4,7 +4,7 @@ Feature: Employee Management with OrangeHRM
     Given I open the "Login" page
     Then the "Login" page is open
     And the "Login" page is loaded
-    
+
     When I login with valid admin credentials on the "Login" page
     Then the "Dashboard" page is open
     And the "Dashboard" page is loaded
@@ -41,12 +41,15 @@ Feature: Employee Management with OrangeHRM
     When I search for employee's id in search field on "Employee List" page
     Then I should see the employee's profile in search results on "Employee List" page
 
-  # When I click edit button for the employee on "Employee List" page
-  # Then I am on the "Personal Details" page
+    When I click edit button for the employee on "Employee List" page
+    Then I am on the "Personal Details" page
+    And the "Personal Details" page is open
+    And the "Personal Details" page is loaded
+    And I wait on the "Personal Details" page
 
-  # When I click nationality drop down arrow on "Personal Details" page
-  # Then country list is opened on "Personal Details" page
-  # And I select "Algerian" from the country list on "Personal Details" page
+    When I click nationality drop down arrow on "Personal Details" page
+    Then country list is opened on "Personal Details" page
+    # And I select "Algerian" from the country list on "Personal Details" page
   # And I click save button on "Personal Details" page
   # Then I am on the "Personal Details" page
 

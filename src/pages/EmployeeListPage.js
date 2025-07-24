@@ -12,8 +12,8 @@ class EmployeeList extends BasePage {
 		this.resultCount = new BaseElement(`//div[contains(@class,'orangehrm-horizontal-padding')]/span[contains(@class,'oxd-text')]`);
 		this.empTableHeader = new BaseElement(`//div[@role='table']/div[1]`);
 		this.empIdsColumn = new BaseElement(`//div[contains(@class, 'oxd-table-row')]/div[contains(@class, 'oxd-table-cell')][2]`);
+		this.profileEditBtn = new BaseElement(`//div[@class='oxd-table-cell-actions']//i[contains(@class,'bi-pencil-fill')]`);
 	}
-
 
 	async getEmployeeCreds() {
 		const credentials = readJSON(`../../data/employeeCredentials.json`);
@@ -62,6 +62,10 @@ class EmployeeList extends BasePage {
 			}
 			return false;
 		}
+	}
+
+	async clickEditProfileBtn() {
+		await this.profileEditBtn.doClick();
 	}
 }
 

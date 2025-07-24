@@ -13,6 +13,9 @@ class PersonalDetailsPage extends BasePage {
 		this.employeeListBtn = new BaseElement(`//a[normalize-space()='Employee List']`);
 		this.savePersonalDetailsBtn = new BaseElement(`//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//button[@type='submit'][normalize-space()='Save']`);
 		this.nationalityDropdownArrow = new BaseElement(`//div[contains(@class, 'oxd-select-text--active')]//i[contains(@class, 'oxd-select-text--arrow')]`);
+		this.nationalitySelectionArrow = new BaseElement(`//label[text()='Nationality']/ancestor::div[contains(@class, 'oxd-input-group')]//i[contains(@class, 'oxd-select-text--arrow')]`);
+		this.countryList = new BaseElement(`//div[@role='listbox'][contains(@class,'oxd-select-dropdown')]`);
+
 	}
 
 	getEmployeeCreds = async () => {
@@ -50,6 +53,14 @@ class PersonalDetailsPage extends BasePage {
 
 	async getFullName() {
 		return `${await this.getFirstNameValue()} ${await this.getLastNameValue()}`;
+	}
+
+	async clickNationalitySelectionArrow() {
+		await this.nationalityDropdownArrow.doClick();
+	}
+
+	async getCountryList() {
+		return this.countryList;
 	}
 
 }

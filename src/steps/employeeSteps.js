@@ -157,4 +157,71 @@ Then(
 	}
 );
 
+When(
+	/^I click edit button for the employee on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.clickEditProfileBtn();
+	}
+);
 
+When(
+	/^I click nationality drop down arrow on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		await page.clickNationalitySelectionArrow();
+	}
+);
+
+Then(
+	/^country list is opened on "(.*)" page$/,
+	async (pageName) => {
+		page = await pageBuilder.getPage(pageName);
+		assert.isTrue(await (await page.getCountryList()).isVisible(), 'The country list is not visible');
+	}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
+
+When(
+	/^$/,
+	async () => {}
+);
