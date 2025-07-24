@@ -107,8 +107,8 @@ class BasePage {
 		await browser.refresh();
 	}
 
-	async waitOnPage(milliseconds) {
-		await browser.pause(milliseconds);
+	async waitOnPage(timeout = 10000) {
+		await browser.pause(timeout = 10000);
 	}
 }
 

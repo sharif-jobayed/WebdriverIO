@@ -136,7 +136,9 @@ Then(
 	/^the names dropdown is opened on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		assert.isTrue(await (await page.getNamesDropdown()).isVisible(), 'The names dropdown is not visible');
+		assert.isTrue(await page.isNamesDropdownVisible(), 'The names dropdown is not visible');
+		const names = await page.getNames();
+		assert.isTrue(names.length > 0, 'The names dropdown is empty');
 	}
 );
 
