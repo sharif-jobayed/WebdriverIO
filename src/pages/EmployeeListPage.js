@@ -3,7 +3,6 @@ import { readJSON } from '../framework/utils/randomData.js'
 import { BaseElement } from '../framework/baseElement.js';
 
 class EmployeeList extends BasePage {
-
 	constructor() {
 		super(`/pim/viewEmployeeList`);
 
@@ -14,7 +13,7 @@ class EmployeeList extends BasePage {
 		this.empTableHeader = new BaseElement(`//div[@role='table']/div[1]`);
 		this.empIdsColumn = new BaseElement(`//div[contains(@class, 'oxd-table-row')]/div[contains(@class, 'oxd-table-cell')][2]`);
 	}
-		
+
 
 	async getEmployeeCreds() {
 		const credentials = readJSON(`../../data/employeeCredentials.json`);
@@ -60,8 +59,8 @@ class EmployeeList extends BasePage {
 				if (empIdText === employeeId) {
 					return true;
 				}
-				return false;
 			}
+			return false;
 		}
 	}
 }

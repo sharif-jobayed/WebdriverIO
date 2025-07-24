@@ -36,4 +36,4 @@ const readJSON = (url) => {
 	return JSON.parse(data);
 }
 
-export { generateRandomUserData, writeJSON, readJSON};
+export { generateRandomUserData, writeJSON, readJSON };

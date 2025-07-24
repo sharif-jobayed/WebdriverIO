@@ -86,4 +86,4 @@ class AddEmployeePage extends BasePage {
 	}
 }
 
-export { AddEmployeePage }
+export { AddEmployeePage, savedCredentials }
