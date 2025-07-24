@@ -82,7 +82,7 @@ class AddEmployeePage extends BasePage {
 	}
 
 	async getSavedCredentials() {
-		return this.savedCredentials;
+		return savedCredentials;
 	}
 }
 
