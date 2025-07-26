@@ -33,7 +33,6 @@ class EmployeeList extends BasePage {
 
 	async isEmployeeInList() {
 		const employeeId = await this.getEmployeeCreds().then(data => data.employeeId);
-
 		for (let i = 0; i < await this.empIdsColumn.length; i++) {
 			const empIdText = await this.empIdsColumn[i].getText();
 			if (empIdText == employeeId) {
