@@ -1,5 +1,5 @@
-import {browser} from '@wdio/globals';
-import {BaseElement} from './baseElement';
+import { browser } from '@wdio/globals';
+import { BaseElement } from './baseElement';
 
 class BasePage {
 
@@ -13,7 +13,7 @@ class BasePage {
 	}
 
 	async open() {
-		await browser.url(this.pagePath);
+		return browser.url(this.pagePath);
 	}
 
 	async getCurrentUrl() {
@@ -22,7 +22,7 @@ class BasePage {
 
 	async getTitle() {
 		return browser.getTitle();
-	}	
+	}
 
 	async isPageVisible() {
 		try {
@@ -80,7 +80,7 @@ class BasePage {
 	}
 
 	async typeInAlert(text) {
-		await browser.sendAlertText(text);
+		return browser.sendAlertText(text);
 	}
 
 	async getAlertText() {
@@ -88,27 +88,27 @@ class BasePage {
 	}
 
 	async dismissAlert() {
-		await browser.dismissAlert();
+		return browser.dismissAlert();
 	}
 
 	async acceptAlert() {
-		await browser.acceptAlert();
+		return browser.acceptAlert();
 	}
 
 	async goBack() {
-		await browser.back();
+		return browser.back();
 	}
 
 	async goForward() {
-		await browser.forward();
+		return browser.forward();
 	}
 
 	async refresh() {
-		await browser.refresh();
+		return browser.refresh();
 	}
 
 	async waitOnPage(timeout = 10000) {
-		await browser.pause(timeout = 10000);
+		return browser.pause(timeout = 10000);
 	}
 }
 

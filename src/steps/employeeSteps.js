@@ -1,8 +1,7 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import { PageBuilder } from '../framework/pageBuilder.js';
 import { assert } from 'chai';
-import { readJSON } from '../framework/utils/randomData.js';
-import {Timeouts} from '../data/appData.json';
+import { Timeouts } from '../data/appData.json';
 
 const pageBuilder = new PageBuilder();
 let page;
@@ -11,7 +10,7 @@ Given(
 	/^I open the "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.open();
+		return page.open();
 	}
 );
 
@@ -43,7 +42,7 @@ When(
 	/^I login with valid admin credentials on the "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.validAdminLogin();
+		return page.validAdminLogin();
 	}
 );
 
@@ -59,7 +58,7 @@ When(
 	/^I click on the PIM menu on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.clickPIMLink();
+		return page.clickPIMLink();
 	}
 );
 
@@ -67,7 +66,7 @@ When(
 	/^I click the Add button on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.clickAddEmployeeButton();
+		return page.clickAddEmployeeButton();
 	}
 );
 
@@ -87,7 +86,7 @@ When(
 		await page.enterEmployeeInfo();
 		await page.enableCreateLoginDetailsToggle();
 		await page.enterLoginDetails();
-		await page.clickSubmit();
+		return page.clickSubmit();
 	}
 );
 
@@ -103,7 +102,7 @@ When(
 	/^I search for employee's id in search field on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.enterEmployeeIdAndSearch();
+		return page.enterEmployeeIdAndSearch();
 	}
 );
 
@@ -120,7 +119,7 @@ Then(
 	/^I click on the Directory menu on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.clickDirectoryLink();
+		return page.clickDirectoryLink();
 	}
 );
 
@@ -128,7 +127,7 @@ When(
 	/^I enter a name in the search field on "(.*)" page$/,
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
-		await page.enterSearchContent();
+		return page.enterSearchContent();
 	}
 );
 
@@ -147,7 +146,7 @@ When(
 	async function (pageName) {
 		page = await pageBuilder.getPage(pageName);
 		await page.pickAName(1);
-		await page.clickSearchButton();
+		return page.clickSearchButton();
 	}
 );
 
@@ -164,7 +163,7 @@ When(
 	/^I click edit button for the employee on "(.*)" page$/,
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
-		await page.clickEditProfileBtn();
+		return page.clickEditProfileBtn();
 	}
 );
 
@@ -172,7 +171,7 @@ When(
 	/^I click nationality drop down arrow on "(.*)" page$/,
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
-		await page.clickNationalitySelectionArrow();
+		return page.clickNationalitySelectionArrow();
 	}
 );
 
@@ -197,41 +196,41 @@ When(
 	/^I click save button on "(.*)" page$/,
 	async (pageName) => {
 		page = await pageBuilder.getPage(pageName);
-		await page.setPersonalDetails();
+		return page.setPersonalDetails();
 	}
 );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );
 
-When(
-	/^$/,
-	async () => {}
-);
+// When(
+// 	/^$/,
+// 	async () => {}
+// );

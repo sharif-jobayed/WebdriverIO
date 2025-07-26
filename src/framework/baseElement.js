@@ -16,18 +16,18 @@ class BaseElement {
 
 	async isVisible(timeout = 5000) {
 		await this.elLocator.waitForDisplayed({ timeout });
-		return await this.elLocator.isDisplayed();
+		return this.elLocator.isDisplayed();
 	}
 
 	async isExist(timeout = 5000) {
 		await this.elLocator.waitForExist({ timeout });
-		return await this.elLocator.isExisting();
+		return this.elLocator.isExisting();
 	}
 
 	async isEnabled(timeout = 5000) {
 		try {
 			await this.elLocator.waitForEnabled({ timeout });
-			return await this.elLocator.isEnabled();
+			return this.elLocator.isEnabled();
 		} catch (err) {
 			console.warn(`${this.elementName} not enabled within ${timeout}ms`);
 			return false;
@@ -36,30 +36,30 @@ class BaseElement {
 
 	async isClickable(timeout = 5000) {
 		await this.elLocator.waitForClickable({ timeout });
-		return await this.elLocator.isClickable();
+		return this.elLocator.isClickable();
 	}
 
 	async isChecked(timeout = 5000) {
 		await this.elLocator.waitForChecked({ timeout });
-		return await this.elLocator.isChecked();
+		return this.elLocator.isChecked();
 	}
 
 	async doClick(timeout = 5000) {
 		if (await this.isClickable(timeout)) {
-			await this.elLocator.click();
+			return this.elLocator.click();
 		}
 	}
 
 	async getText(timeout = 5000) {
 		if (await this.isVisible(timeout)) {
-			return await this.elLocator.getText();
+			return this.elLocator.getText();
 		}
 		return ``;
 	}
 
 	async getValue(timeout = 5000) {
 		if (await this.isExist(timeout)) {
-			return await this.elLocator.getValue();
+			return this.elLocator.getValue();
 		}
 		return ``;
 	}
@@ -69,13 +69,13 @@ class BaseElement {
 			await this.elLocator.click();
 			await browser.keys(['Control', 'a']);
 			await browser.keys('Backspace');
-			await this.elLocator.setValue(text);
+			return this.elLocator.setValue(text);
 		}
 	}
 
 	async scrollTo(timeout = 5000) {
 		if (await this.isExist(timeout)) {
-			await this.elLocator.scrollIntoView();
+			return this.elLocator.scrollIntoView();
 		} else {
 			console.warn(`${this.elementName} not found to scroll into view`);
 		}

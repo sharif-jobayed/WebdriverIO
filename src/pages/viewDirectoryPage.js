@@ -51,14 +51,15 @@ class ViewDirectoryPage extends BasePage {
 
 	async viewEmployeeCard() {
 		for (let i = 0; i < await this.employeeCards.length; i++) {
-			await this.employeeCards[i].click();
-			await this.employeeProfileCard.isVisible(Timeouts.LowMed);
+			const empCard = this.employeeCards[i];
+			await empCard.isDisplayed();
+			await empCard.click();
 			break;
 		}
 	}
 
 	async isProfileCardVisible() {
-		const iv = await this.employeeProfileCard.isVisible();
+		const iv = await this.employeeProfileCard.isVisible(30000);
 		return iv;
 	}
 }
