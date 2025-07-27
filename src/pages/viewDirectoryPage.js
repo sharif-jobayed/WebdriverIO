@@ -1,8 +1,6 @@
-import { Timeouts } from '../data/appData.json';
 import { readJSON } from '../framework/utils/randomData.js';
 import { BasePage } from "../framework/basePage.js";
 import { BaseElement } from "../framework/baseElement.js";
-import { browser } from '@wdio/globals';
 
 let firstName;
 
@@ -27,7 +25,7 @@ class ViewDirectoryPage extends BasePage {
 
 	async enterSearchContent() {
 		firstName = await this.getEmployeeCreds().then(data => data.firstName);
-		await this.searchNameField.clearAndType(firstName);
+		return this.searchNameField.clearAndType(firstName);
 	}
 
 	async isNamesDropdownVisible() {
@@ -46,7 +44,7 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	async clickSearchButton() {
-		await this.searchBtn.doClick();
+		return this.searchBtn.doClick();
 	}
 
 	async viewEmployeeCard() {

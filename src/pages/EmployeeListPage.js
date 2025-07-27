@@ -21,14 +21,14 @@ class EmployeeList extends BasePage {
 	}
 
 	async clickAddEmployeeButton() {
-		await this.addBtn.doClick();
+		return this.addBtn.doClick();
 	}
 
 	async enterEmployeeIdAndSearch() {
 		const employeeId = await this.getEmployeeCreds().then(data => data.employeeId);
 		await this.empIdSearchField.clearAndType(employeeId);
 		await this.searchBtn.doClick();
-		await this.resultCount.isVisible();
+		return this.resultCount.isVisible();
 	}
 
 	async isEmployeeInList() {
@@ -44,7 +44,7 @@ class EmployeeList extends BasePage {
 	}
 
 	async clickEditProfileBtn() {
-		await this.profileEditBtn.doClick();
+		return this.profileEditBtn.doClick();
 	}
 }
 

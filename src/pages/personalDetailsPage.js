@@ -1,6 +1,6 @@
 import { BasePage } from '../framework/basePage.js';
 import { BaseElement } from '../framework/baseElement.js';
-import {readJSON} from '../framework/utils/randomData.js';
+import { readJSON } from '../framework/utils/randomData.js';
 
 class PersonalDetailsPage extends BasePage {
 	constructor() {
@@ -28,19 +28,19 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async getFirstNameValue() {
-		return await this.firstNameField.getValue();
+		return this.firstNameField.getValue();
 	}
 
 	async getLastNameValue() {
-		return await this.lastNameField.getValue();
+		return this.lastNameField.getValue();
 	}
 
 	async getEmployeeIdValue() {
-		return await this.employeeIdField.getValue();
+		return this.employeeIdField.getValue();
 	}
 
 	async clickEmployeeListButton() {
-		await this.employeeListBtn.doClick();
+		return this.employeeListBtn.doClick();
 	}
 
 	getProfileNameEl() {
@@ -48,7 +48,7 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async getNameFromCreds() {
-		return `${await this.getEmployeeCreds().then(data => data.firstName)} ${await this.getEmployeeCreds().then(data => data.lastName)}`;		
+		return `${await this.getEmployeeCreds().then(data => data.firstName)} ${await this.getEmployeeCreds().then(data => data.lastName)}`;
 	}
 
 	async getFullName() {
@@ -56,7 +56,7 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async clickNationalitySelectionArrow() {
-		await this.nationalityDropdownArrow.doClick();
+		return this.nationalityDropdownArrow.doClick();
 	}
 
 	async getCountryList() {
@@ -65,7 +65,7 @@ class PersonalDetailsPage extends BasePage {
 
 	async selectNationality(nationality) {
 		await this.nationality(nationality).scrollTo();
-		await this.nationality(nationality).doClick();
+		return this.nationality(nationality).doClick();
 	}
 
 	async getSelectedNationality(nationality) {
@@ -73,7 +73,7 @@ class PersonalDetailsPage extends BasePage {
 	}
 
 	async setPersonalDetails() {
-		await this.savePersonalDetailsBtn.doClick();
+		return this.savePersonalDetailsBtn.doClick();
 	}
 }
 

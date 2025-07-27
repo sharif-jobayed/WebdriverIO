@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'fs';
 
 
 const generateRandomUserData = () => {
-	return {
+	const fakerData = {
 		firstName: faker.person.firstName(),
 		middleName: faker.person.middleName(),
 		// employeeId: Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
@@ -26,10 +26,13 @@ const generateRandomUserData = () => {
 			zipCode: faker.location.zipCode()
 		},
 	};
+
+	return fakerData;
 };
 
 const writeJSON = (data) => {
-	return writeFileSync(new URL(`../../data/employeeCredentials.json`, import.meta.url), JSON.stringify(data, null, 2));
+	const wrotenData = writeFileSync(new URL(`../../data/employeeCredentials.json`, import.meta.url), JSON.stringify(data, null, 2));
+	return wrotenData;
 }
 
 const readJSON = (url) => {

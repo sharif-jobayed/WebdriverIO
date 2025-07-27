@@ -1,7 +1,7 @@
-import {BasePage} from '../framework/basePage.js';
-import {readFileSync} from 'fs';
+import { BasePage } from '../framework/basePage.js';
+import { readFileSync } from 'fs';
 const userData = JSON.parse(readFileSync(new URL('../data/userData.json', import.meta.url)));
-import {BaseElement} from '../framework/baseElement.js';
+import { BaseElement } from '../framework/baseElement.js';
 
 class DashboardPage extends BasePage {
 
@@ -10,12 +10,11 @@ class DashboardPage extends BasePage {
 
 		this.pimLink = new BaseElement(`//span[normalize-space()='PIM']`);
 		this.directoryLink = new BaseElement(`//span[normalize-space()='Directory']`);
-
 	}
 
 	async clickPIMLink() {
 		try {
-			await this.pimLink.doClick();
+			return this.pimLink.doClick();
 		} catch (error) {
 			console.error(`Failed to click on PIM link: ${error.message}`);
 		}
@@ -23,11 +22,11 @@ class DashboardPage extends BasePage {
 
 	async clickDirectoryLink() {
 		try {
-			await this.directoryLink.doClick();
+			return this.directoryLink.doClick();
 		} catch (error) {
 			console.error(`Failed to click on Directory link: ${error.message}`);
 		}
 	}
 }
 
-export {DashboardPage}
+export { DashboardPage }

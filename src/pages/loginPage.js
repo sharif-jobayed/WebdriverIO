@@ -15,7 +15,7 @@ class LoginPage extends BasePage {
 	async validAdminLogin () {
 		await this.usernameField.clearAndType(userData.Admin.username);
 		await this.passwordField.clearAndType(userData.Admin.password);
-		await this.loginButton.doClick();
+		return this.loginButton.doClick();
 	}
 }
 

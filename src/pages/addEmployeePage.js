@@ -31,28 +31,24 @@ class AddEmployeePage extends BasePage {
 				employeeId: this.randomUserData.employeeId
 			};
 		}
-
-
 		return cachedEmployeeData;
 	}
 
 	async enterEmployeeInfo() {
 		await this.firstNameField.clearAndType(this.randomUserData.firstName);
 		await this.lastNameField.clearAndType(this.randomUserData.lastName);
-		await this.employeeIdField.clearAndType(this.randomUserData.employeeId);
-
+		return this.employeeIdField.clearAndType(this.randomUserData.employeeId);
 	}
 
 	async enableCreateLoginDetailsToggle() {
 		await this.toggleLoginDetailsCheckbox.doClick();
-		await this.usernameField.scrollTo();
+		return this.usernameField.scrollTo();
 	}
 
 	async enterLoginDetails() {
 		await this.usernameField.clearAndType(this.randomUserData.username);
 		await this.passwordField.clearAndType(this.randomUserData.password);
-		await this.confirmPasswordField.clearAndType(this.randomUserData.password);
-
+		return this.confirmPasswordField.clearAndType(this.randomUserData.password);
 	}
 
 	async saveEmployeeCredentials() {
