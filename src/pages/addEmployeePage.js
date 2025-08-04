@@ -13,10 +13,12 @@ class AddEmployeePage extends BasePage {
 		this.middleNameField = new BaseElement(`//input[@placeholder='Middle Name']`);
 		this.lastNameField = new BaseElement(`//input[@placeholder='Last Name']`);
 		this.employeeIdField = new BaseElement(`//label[text()='Employee Id']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input`);
+		this.epmIDErr = new BaseElement(`//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']`);
 		this.saveButton = new BaseElement(`//button[@type='submit']`);
 		this.toggleLoginDetailsCheckbox = new BaseElement(`//span[@class='oxd-switch-input oxd-switch-input--active --label-right']`);
 		this.usernameField = new BaseElement(`//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input`);
 		this.passwordField = new BaseElement(`//input[@type='password']`);
+		this.pssErr = new BaseElement(`//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']`);
 		this.confirmPasswordField = new BaseElement(`//label[text()='Confirm Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div[@class='']/input[@type='password']`);
 		this.randomUserData = generateRandomUserData();
 	}
@@ -37,7 +39,11 @@ class AddEmployeePage extends BasePage {
 	async enterEmployeeInfo() {
 		await this.firstNameField.clearAndType(this.randomUserData.firstName);
 		await this.lastNameField.clearAndType(this.randomUserData.lastName);
-		return this.employeeIdField.clearAndType(this.randomUserData.employeeId);
+		await this.employeeIdField.clearAndType(this.randomUserData.employeeId);
+		if (this.epmIDErr.isVisible()) {
+			this.randomEmployeeData();
+			return this.employeeIdField.clearAndType(this.randomUserData.employeeId);
+		}
 	}
 
 	async enableCreateLoginDetailsToggle() {
@@ -48,6 +54,10 @@ class AddEmployeePage extends BasePage {
 	async enterLoginDetails() {
 		await this.usernameField.clearAndType(this.randomUserData.username);
 		await this.passwordField.clearAndType(this.randomUserData.password);
+		if (this.pssErr.isVisible()) {
+			this.randomEmployeeData();
+			await this.passwordField.clearAndType(this.randomUserData.password);
+		}
 		return this.confirmPasswordField.clearAndType(this.randomUserData.password);
 	}
 
