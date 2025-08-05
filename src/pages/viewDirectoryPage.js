@@ -49,13 +49,6 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	async viewEmployeeCard() {
-		// for (let i = 0; i < await this.employeeCards.length; i++) {
-		// 	const empCard = this.employeeCards[i];
-		// 	await empCard.isDisplayed();
-		// 	await empCard.click();
-		// 	break;
-		// }
-
 		await this.employeeCard.isVisible(5000);
 		return this.employeeCard.doClick();
 	}
