@@ -14,7 +14,8 @@ class ViewDirectoryPage extends BasePage {
 			return new BaseElement(`//div[@role='listbox'][contains(@class,'oxd-autocomplete-dropdown')]//span[${index}]`);
 		}
 		this.searchBtn = new BaseElement(`//button[@type='submit']`);
-		this.employeeCards = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`).elLocators;
+		// this.employeeCards = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`).elLocators;
+		this.employeeCard = new BaseElement(`//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--white orangehrm-directory-card']`);
 		// this.employeeCardName = new BaseElement(`//p[normalize-space()='${firstName}'`);
 		this.employeeProfileCard = new BaseElement(`//div[@class='orangehrm-corporate-directory-sidebar']`);
 	}
@@ -48,12 +49,15 @@ class ViewDirectoryPage extends BasePage {
 	}
 
 	async viewEmployeeCard() {
-		for (let i = 0; i < await this.employeeCards.length; i++) {
-			const empCard = this.employeeCards[i];
-			await empCard.isDisplayed();
-			await empCard.click();
-			break;
-		}
+		// for (let i = 0; i < await this.employeeCards.length; i++) {
+		// 	const empCard = this.employeeCards[i];
+		// 	await empCard.isDisplayed();
+		// 	await empCard.click();
+		// 	break;
+		// }
+
+		await this.employeeCard.isVisible(5000);
+		return this.employeeCard.doClick();
 	}
 
 	async isProfileCardVisible() {

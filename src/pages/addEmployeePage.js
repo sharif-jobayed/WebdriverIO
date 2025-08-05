@@ -57,7 +57,11 @@ class AddEmployeePage extends BasePage {
 		if (this.pssErr.isVisible()) {
 			this.randomEmployeeData();
 			await this.passwordField.clearAndType(this.randomUserData.password);
+			await this.firstNameField.clearAndType(this.randomUserData.firstName);
+			await this.lastNameField.clearAndType(this.randomUserData.lastName);
+			await this.employeeIdField.clearAndType(this.randomUserData.employeeId);
 		}
+
 		return this.confirmPasswordField.clearAndType(this.randomUserData.password);
 	}
 
