@@ -131,5 +131,3 @@ dist
 
 # Allure Report
 allure-results
-
-package-lock.json
