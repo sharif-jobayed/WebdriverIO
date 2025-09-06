@@ -1,0 +1,9 @@
+{
+	"BaseURL": "https://opensource-demo.orangehrmlive.com/web/index.php",
+	"Timeouts": {
+		"Min": 5000,
+		"LowMed": 10000,
+		"Med": 30000,
+		"Max": 60000
+	}
+}

@@ -131,6 +131,6 @@ dist
 
 # Allure Report
 allure-results
+allure-report
 
 # VS Code
-
